@@ -7,8 +7,8 @@ const search = document.querySelector('input[type=search]');
 searchIcon.addEventListener('click',toggleSearch);
 
 function toggleSearch(){
-    text.style.animation = 'rotateTask 0.5s';
-    search.style.animation = 'rotateSearch 0.5s';
+    text.style.animation = 'rotateTask 0.5s ease-in';
+    search.style.animation = 'rotateSearch 0.5s ease-in';
     text.classList.toggle('task-hide');
     search.classList.toggle('search-active');
 }
