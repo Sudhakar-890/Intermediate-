@@ -94,6 +94,7 @@
 
  #text {
      width: 300px;
+     font-size:12px;
      padding: 5px 10px;
      margin-bottom: 10px;
      background-color: transparent;
@@ -107,6 +108,26 @@
  #text::placeholder {
      color: darkmagenta;
  }
+
+ 
+#description{
+    width:300px;
+    border:none;
+    border-bottom:2px solid darkblue; 
+    font-size:10px; 
+    padding:5px 10px 5px;
+    margin-bottom:10px;
+    background-color: transparent;
+    color:rgba(51, 5, 51, 0.762);  
+    outline:none;
+}
+
+#description::placeholder{
+    /* padding-top:12px; */
+    font-size:x-small;
+    color: darkmagenta;
+}
+
 
  input[type='datetime-local'] {
      outline: none;
@@ -192,6 +213,27 @@
         padding:15px 25px;
         margin-bottom:20px;
         font-size:20px;
+    }
+
+    #text::placeholder{
+        font-size:20px;
+    }
+
+    #description{
+    width:92%;
+    border:none;
+    border-bottom:3px solid darkblue; 
+    font-size:17px; 
+    padding:15px 25px;
+    margin-bottom:20px;
+    background-color: transparent;
+    color:rgba(51, 5, 51, 0.762);  
+    }
+
+    #description::placeholder{
+        padding-top:20px;
+        font-size:large;
+        color: darkmagenta;
     }
 
     input[type='datetime-local']{

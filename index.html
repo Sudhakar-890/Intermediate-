@@ -44,11 +44,10 @@
             <center>
                 <div id='inputBox'>
                     <input id="text" placeholder="Enter text here...">
+                    <textarea id="description" placeholder="Description..."></textarea>
                     <input type='datetime-local'>
                     <select id="priority">
-                        <option value="High">
-                            High
-                        </option>
+                        <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>
                     </select>
@@ -61,6 +60,13 @@
                     </button>
                 </div>
             </center>
+        </section>
+        <section id="pendingTask">
+            <table>
+                <tr>
+                    <th>Task</th><th>Description</th>
+                </tr>
+            </table>
         </section>
     </main>
     <footer>
