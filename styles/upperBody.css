@@ -88,10 +88,38 @@
      margin-top: 20px;
      border: 2px solid darkblue;
      border-radius: 20px;
-     margin: 40px 20px 10px;
-     padding: 25px 15px 10px;
+     margin: 20px 20px 10px;
+     padding: 85px 15px 10px;
      background: white;
-     line-height: 1;
+     position: relative;
+     /* overflow:hidden; */
+ }
+
+ #inputBox::before{
+    content:'';
+    display:block;
+    width:100%;
+    height:55px;
+    background-image:url('../assets/gifs/input.gif');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    position:absolute;
+    top:10px;
+    right:25px;
+ }
+
+ #inputBox::after{
+    content:'';
+    display:block;
+    width:80px;
+    height:60px;
+    background-image:url('../assets/gifs/target.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:absolute;
+    top:10px;
+    left:10px;
  }
 
  #text {
@@ -102,16 +130,13 @@
      background-color: transparent;
      border: none;
      border-bottom: 3px ridge darkslateblue;
-     /*box-shadow:0px 1px 3px black;*/
      outline: none;
      color: darkmagenta;
- }
- 
+ } 
 
  #text::placeholder {
      color: darkmagenta;
- }
-
+ } 
  
 #description{
     width:300px;
@@ -119,9 +144,10 @@
     border:2px solid darkblue; 
     font-size:10px; 
     padding:5px 10px 5px;
-    margin-bottom:10px;
+    margin-bottom:20px;
     background-color: transparent;
     color:rgba(51, 5, 51, 0.762);  
+    height:70px;
     outline:none;
     resize:none;
 }
@@ -141,10 +167,11 @@
      padding: 2px 7px;
      color: darkblue;
      background-color: lightblue;
-     background-image:url('assets/schedule.png');
-     background-size:12px;
-     background-position:top 50%, right 5px;
-     background-repeat:none;
+     background-image:url('../assets/schedule.png');
+     background-size:18px;
+     background-position:top 50% right 25px;
+     background-repeat:no-repeat;
+
  }
 
  #priority {
@@ -158,11 +185,10 @@
  }
 
  #addBtn,#clearBtn {
-     padding: 5px 15px;
+     padding: 8px 35px;
      border-radius: 10px;
      border: none;
-     margin: 15px 20px;
-     
+     margin: 35px 20px 10px;    
      color: white;
      box-shadow: -1px 1px 10px beige,1px -1px 10px black;
      transition: all 0.2s;
@@ -211,9 +237,19 @@
     }
 
     #inputBox{
-        padding:30px 15px 10px;
+        padding:100px 15px 10px;
         margin:20px 25px;
         border-radius: 40px;
+    }
+
+    #inputBox::after{
+        left:0px;
+        border-radius:50%;
+    }
+
+    #inputBox::before{
+        right:15px;
+        top:12px
     }
 
     #text{
@@ -249,6 +285,7 @@
         border-radius:25px;
         padding:15px 25px;
         font-size:20px;
+        background-image: none;
     }
 
     #priority{
@@ -259,15 +296,15 @@
         appearance: none;
         background-image: url('../assets/down.png');
         background-repeat: no-repeat;
-        background-size: 18px;
-        background-position: right 20px top 50%;
+        background-size: 5px;
+        background-position: right 20px,top 50%;
         margin-left:20px;
     }
 
 
      #addBtn,#clearBtn {
         font-size:25px;
-        padding:10px 50px;
+        padding:10px 80px;
         border-radius:35px;
         margin:35px 50px 15px;
         font-weight:bolder;

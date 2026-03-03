@@ -72,15 +72,14 @@ header {
         height:95px;
     }
 
-    #appNameBox {
-        
+    #appNameBox {     
         text-align: center;
         width: 100%;
         height:100%;
     }
 
     #floatName{
-        top:70px;
+        top:72px;
         right:10px;
         font-size:15px;
     }

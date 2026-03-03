@@ -34,3 +34,13 @@ footer{
 .pileBox img:hover{
     filter:grayscale(0);
 }
+
+#menuPile a{
+    text-decoration: none;
+}
+
+@media screen and (min-width:400px){
+    footer{
+        display:none;
+    }
+}
