@@ -5,13 +5,13 @@
 }
 
 body{
-    height:1000px;
+    height:100vh;
     background:linear-gradient(to left, lightblue, #654593);
     font-family: 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
     gap:10px;
-    padding-top:80px;
+    padding-top:100px;
 }
 
 @media screen and (min-width:400px){
@@ -19,4 +19,10 @@ body{
         padding-top:120px;
     }
 
+}
+
+@media screen and (max-height:500px){
+    footer{
+        display:none;
+    }
 }

@@ -57,7 +57,7 @@ header {
     text-wrap: nowrap;
     position: absolute;
     font-family: cursive;
-    top: 44px;
+    top: 42px;
     right: 5px;
     font-weight: bolder;
     color: brown;
@@ -80,7 +80,7 @@ header {
     }
 
     #floatName{
-        top:74px;
+        top:70px;
         right:10px;
         font-size:15px;
     }
