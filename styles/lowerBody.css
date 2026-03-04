@@ -28,11 +28,16 @@ footer{
 
 .pileBox img{
     width:40px;
-    filter: grayscale(50%);
+    pointer-events:none;
+}
+
+.pileBox p{
+    pointer-events:none;
 }
 
 #menuPile a{
     text-decoration: none;
+    filter: grayscale(80%);
 }
 
 @media screen and (min-width:400px){

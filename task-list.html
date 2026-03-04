@@ -23,8 +23,43 @@
         </section>
     </header>
 
+    <main>
+        <section id="mainBox">
+            <!-- filters -->
+            <div id="filterRow">
+                <button class="filterBtn">All</button>
+                <button class="filterBtn">Completed</button>
+                <button class="filterBtn">Pending</button>
+                <button class="filterBtn">Failed</button>
+                <button class="filterBtn">Deleted</button>
+            </div>
 
-        <footer>
+            <div id="taskListBox">
+                <!-- priority bar -->
+                <div id="priorityBox">
+                    <div class="prior" id="high">
+                        High
+                    </div>
+                    <div class="prior" id="medium">
+                        Medium
+                    </div>
+                    <div class="prior" id="low">
+                        Low
+                    </div>
+                </div>
+                <div class="taskListDisplay">
+                    <!-- tasks are rendered by js -->
+                     <div class="taskBox">
+                        
+                     </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+    <footer>
         <section id="menuPile">
             <a href="index.html">
             <div class="pileBox">
@@ -46,5 +81,7 @@
             </a>
         </section>
     </footer>
+    <script src="scripts/general.js"></script>
+    <script src="scripts/task-list/task-view-animate.js"></script>
 </body>
 </html>

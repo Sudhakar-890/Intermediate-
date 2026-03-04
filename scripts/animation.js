@@ -1,9 +1,8 @@
+/* searchbar change */
+
 const text = document.querySelector('.center-heading');
-
 const searchIcon = document.querySelector('#searchIcon');
-
 const search = document.querySelector('input[type=search]');
-
 searchIcon.addEventListener('click',toggleSearch);
 
 function toggleSearch(){
@@ -12,11 +11,3 @@ function toggleSearch(){
     text.classList.toggle('task-hide');
     search.classList.toggle('search-active');
 }
-
-/* pile animation */
-
-let active = true;
-
-const piles = document.querySelectorAll('footer a');
-
-piles.addEventListener('click',)
