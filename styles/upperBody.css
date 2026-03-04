@@ -166,7 +166,7 @@
      padding: 2px 7px;
      color: darkblue;
      background-color: lightblue;
-     background-image:url('../assets/schedule.png');
+     background-image:url('../assets/gifs/schedule.png');
      background-size:18px;
      background-position:top 50% right 25px;
      background-repeat:no-repeat;
@@ -182,7 +182,7 @@
      padding: 2px 7px;
      color: darkblue;
      background-color: lightblue;
-     background-image:url('../assets/gifs/clock.jpg');
+     background-image:url('../assets/gifs/clock.png');
      background-size:18px;
      background-position:top 50% right 25px;
      background-repeat:no-repeat;
@@ -201,7 +201,7 @@
  }
 
  #addBtn,#clearBtn {
-     padding: 8px 30px;
+     padding: 8px 35px;
      border-radius: 10px;
      border:1px grey solid;
      margin: 35px 0px 10px; 
@@ -312,7 +312,7 @@
         padding:15px 25px;
         font-size:20px;
         appearance: none;
-        background-image: url('../assets/down.png');
+        background-image: url('../assets/gifs/down.png');
         background-repeat: no-repeat;
         background-size: 5px;
         background-position: right 20px,top 50%;
