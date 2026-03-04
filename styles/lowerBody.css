@@ -31,10 +31,6 @@ footer{
     filter: grayscale(50%);
 }
 
-.pileBox img:hover{
-    filter:grayscale(0);
-}
-
 #menuPile a{
     text-decoration: none;
 }

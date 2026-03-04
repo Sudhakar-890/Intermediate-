@@ -12,3 +12,11 @@ function toggleSearch(){
     text.classList.toggle('task-hide');
     search.classList.toggle('search-active');
 }
+
+/* pile animation */
+
+let active = true;
+
+const piles = document.querySelectorAll('footer a');
+
+piles.addEventListener('click',)

@@ -144,7 +144,6 @@
     border:2px solid darkblue; 
     font-size:10px; 
     padding:5px 10px 5px;
-    margin-bottom:20px;
     background-color: transparent;
     color:rgba(51, 5, 51, 0.762);  
     height:70px;
@@ -159,10 +158,10 @@
 }
 
 
- input[type='datetime-local'] {
+ input[type='date'] {
      outline: none;
      border: none;
-     width: 200px;
+     width: 300px;
      border-radius: 15px;
      padding: 2px 7px;
      color: darkblue;
@@ -171,6 +170,23 @@
      background-size:18px;
      background-position:top 50% right 25px;
      background-repeat:no-repeat;
+     margin:15px 0px 10px;
+
+ }
+ 
+ #time{
+     outline: none;
+     border: none;
+     width: 195px;
+     border-radius: 15px;
+     padding: 2px 7px;
+     color: darkblue;
+     background-color: lightblue;
+     background-image:url('../assets/schedule.png');
+     background-size:18px;
+     background-position:top 50% right 25px;
+     background-repeat:no-repeat;
+     margin-right:5px;
 
  }
 
@@ -185,21 +201,23 @@
  }
 
  #addBtn,#clearBtn {
-     padding: 8px 35px;
+     padding: 8px 30px;
      border-radius: 10px;
-     border: none;
-     margin: 35px 20px 10px;    
+     border:1px grey solid;
+     margin: 35px 0px 10px; 
      color: white;
      box-shadow: -1px 1px 10px beige,1px -1px 10px black;
      transition: all 0.2s;
  }
 
  #addBtn {
-     background-color: blue;
+    background-color: blue;
+    margin-left: 20px;
  }
 
  #clearBtn {
      background-color: orangered;
+     margin-right:20px;
  }
 
  #addBtn:active,
@@ -280,7 +298,7 @@
         color: darkmagenta;
     }
 
-    input[type='datetime-local']{
+    input[type='date']{
         width:60%;
         border-radius:25px;
         padding:15px 25px;
