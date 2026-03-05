@@ -125,6 +125,7 @@
  #text {
      width: 300px;
      font-size:12px;
+     font-weight:bold;
      padding: 5px 10px;
      margin-bottom: 25px;
      background-color: transparent;

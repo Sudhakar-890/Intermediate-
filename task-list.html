@@ -33,28 +33,116 @@
                 <button class="filterBtn">Failed</button>
                 <button class="filterBtn">Deleted</button>
             </div>
-
-            <div id="taskListBox">
-                <!-- priority bar -->
-                <div id="priorityBox">
-                    <div class="prior" id="high">
-                        High
-                    </div>
-                    <div class="prior" id="medium">
-                        Medium
-                    </div>
-                    <div class="prior" id="low">
-                        Low
-                    </div>
-                </div>
-                <div class="taskListDisplay">
-                    <!-- tasks are rendered by js -->
-                     <div class="taskBox">
-                        
-                     </div>
-                </div>
+            
+            <!--search box with priority-->
+            <div id="searchBox">
+            <div id="searchToggle">
+ <!-- priority bar -->
+ <div id="priorityBox">
+  <div class="prior" id="highBtn">
+   High
+  </div>
+  <div class="prior" id="mediumBtn">
+   Medium
+  </div>
+  <div class="prior" id="lowBtn">
+   Low
+  </div>
+ </div>
+                <input type="search" placeholder="search">
             </div>
+            <img id="searchIcon" src="assets/gifs/find.png" alt="search icon" />
+        </div>
+            
+            
+          
 
+            
+<div id="scrollBox"
+            <section id='taskListDisplay'>
+<section class="priorTabs" id='high'>
+<div class='taskBox'>
+<div class='taskDetail'>
+ <div class="titleBox">
+  <img src='assets/gifs/target.png' class="titleIcon"/>
+<h3 class='taskTitle'>Complete HW</h3>
+</div>
+<div class="taskTimeBox">
+ <img class='taskCalender' src='assets/gifs/schedule.png'>
+<p class='taskDateTime'>
+27.05.2026 &#183; 9.00pm 
+</p>
+</div>
+<p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
+</div>
+<div class="taskActions">
+ <div class="taskIcons">
+  <img class="taskTrashIcon" src="assets/task-list/edit.png"/>
+  <img class="taskTrashIcon" src="assets/task-list/trash.png"/>
+ </div>
+ <button class="completeBtn">
+   complete &#10004;
+ </button>
+</div>
+</div>
+</section>
+
+<section class="priorTabs" id='medium'>
+<div class='taskBox'>
+<div class='taskDetail'>
+ <div class="titleBox">
+  <img src='assets/gifs/target.png' class="titleIcon"/>
+<h3 class='taskTitle'>Complete HW</h3>
+</div>
+<div class="taskTimeBox">
+ <img class='taskCalender' src='assets/gifs/schedule.png'>
+<p class='taskDateTime'>
+27.05.2026 &#183; 9.00pm 
+</p>
+</div>
+<p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
+</div>
+<div class="taskActions">
+ <div class="taskIcons">
+  <img class="taskTrashIcon" src="assets/task-list/edit.png"/>
+  <img class="taskTrashIcon" src="assets/task-list/trash.png"/>
+ </div>
+ <button class="completeBtn">
+   completed &#10004;
+ </button>
+</div>
+</div>
+</section>
+<section class="priorTabs" id='low'>
+<div class='taskBox'>
+<div class='taskDetail'>
+ <div class="titleBox">
+  <img src='assets/gifs/target.png' class="titleIcon"/>
+<h3 class='taskTitle'>Complete HW</h3>
+</div>
+<div class="taskTimeBox">
+ <img class='taskCalender' src='assets/gifs/schedule.png'>
+<p class='taskDateTime'>
+27.05.2026 &#183; 9.00pm 
+</p>
+</div>
+<p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
+</div>
+<div class="taskActions">
+ <div class="taskIcons">
+  <img class="taskTrashIcon" src="assets/task-list/edit.png"/>
+  <img class="taskTrashIcon" src="assets/task-list/trash.png"/>
+ </div>
+ <button class="completeBtn">
+   completed &#10004;
+ </button>
+</div>
+</div>
+</section>
+
+</section>
+</div>
+            </div>
         </section>
     </main>
 
@@ -75,7 +163,7 @@
             </a>
             <a href="settings.html">
             <div class="pileBox">
-                <img class="pileLogo" src="assets/pile/settings.png" alt="" />
+                <img class="pileLogo" src="assets/pile/settings.png" />
                 <p id="pileText">settings</p>
             </div>
             </a>

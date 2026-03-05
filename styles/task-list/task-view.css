@@ -13,13 +13,13 @@ header h1{
 /* filters */
 
 main{
-    width:100%;
+    width:100vw;
 }
 
 #mainBox{
     width:100%;
     margin:10px 0px;
-    overflow: hidden;
+    overflow:hidden;
 }
 
 #filterRow{
@@ -51,11 +51,78 @@ main{
   margin-top:30px;
 }
 
+/* search box styles here*/
+
+input[type=search] {
+     display: none;
+     opacity: 0;
+     border: 1px solid black;
+     padding: 5px 10px;
+     width: 90%;
+     height: 100%;
+     margin-left: 10px;
+     outline: none;
+     color:darkblue;
+     border-radius:5px;
+ }
+
+ .task-hide {
+     display: none;
+     opacity: 0;
+ }
+
+ .search-active {
+     display: block !important;
+     opacity: 1 !important;
+ }
+
+ @keyframes rotateTask {
+     0% {
+         opacity: 0;
+         transform: translateY(100%);
+     }
+
+     100% {
+         opacity: 1;
+         transform: translateX(0);
+     }
+ }
+
+ @keyframes rotateSearch {
+     0% {
+         opacity: 0;
+         transform: translateY(100%);
+     }
+
+     100% {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ #searchBox {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ #searchIcon {
+     width: 35px;
+     margin-right: 20px;
+     transition: all 0.2s;
+ }
+
+ #searchIcon:active {
+     transform: scale(0.95);
+ }
+
+/* search box styles end*/
+
+
 #priorityBox{
     display:flex;
     justify-content: space-between;
-    margin:0px auto;
-    width:100%;
+    width:90%;
     background-color:beige;
     color:orangered;
     border-bottom:4px solid rgb(53, 53, 139) ;
@@ -68,8 +135,8 @@ main{
     text-align:center;
 }
 
-#high,#medium,#low{
-    font-size:large;
+#highBtn,#mediumBtn,#lowBtn{
+    font-size:medium;
     font-weight:bold;
 }
 
@@ -79,12 +146,129 @@ main{
     background-color: rgb(53, 53, 139);
 }
 
-#taskListDisplay{
-    width:max-content;
-    height:min-content;
-}
-
 /* task list */
 
+#scrollBox{
+ margin-top: 20px;
+ width:100vw;
+ overflow:auto;
+ scroll-snap-type:x mandatory;
+}
 
+#taskListDisplay{
+ width:max-content;
+ display:flex;
+}
 
+.priorTabs{
+ scroll-snap-align:center;
+ width:100vw;
+}
+
+.titleBox{
+ display:flex;
+ gap:5px;
+}
+
+.titleIcon{
+ width:25px;
+ object-fit: cover
+}
+
+.taskTitle{
+ margin-bottom:10px;
+ word-spacing: 8px;
+ letter-spacing:0.5px;
+ 
+}
+
+.taskBox{
+width:90%;
+border-radius:15px;
+border:1px grey solid;
+padding:10px;
+margin:5px auto;
+display:flex;
+gap:10px;
+align-items:center;
+background-color :white;
+}
+
+.taskDetail{
+ width:75%;
+}
+
+.taskTimeBox{
+ display:flex;
+ gap:10px;
+ align-items:center;
+}
+
+.taskCalender{
+ width:16px;
+ margin-bottom:5px;
+}
+
+.taskDateTime{
+ font-size: 10px;
+ margin-bottom:5px;
+}
+
+.taskDescription{
+ font-size: 10px;
+ opacity:0.6;
+}
+
+.taskDescription::before{
+ content:'text: ';
+ display:block;
+ width:25px;
+ height:10px;
+ margin-bottom:2px;
+ color:orangered;
+}
+
+.taskActions{
+ width:25%;
+ height:100%;
+ display:flex;
+ flex-direction: column;
+ gap:10px;
+ justify-content:flex-start;
+}
+
+.taskIcons{
+ display:flex;
+ gap:10px;
+ justify-content: flex-end;
+}
+
+.taskIcons img{
+ width:20px;
+}
+
+#high .taskTitle{
+ color:red;
+}
+
+#medium .taskTitle{
+ color:orange;
+}
+
+#low .taskTitle{
+ color:blue;
+}
+
+.completeBtn{
+ font-size: 5px;
+ padding:5px;
+ border-radius: 10px;
+ border:1px grey solid;
+ background-color:green;
+ color:white;
+ font-weight: bolder;
+}
+
+.completeBtn:active{
+ transform:scale(0.98);
+}

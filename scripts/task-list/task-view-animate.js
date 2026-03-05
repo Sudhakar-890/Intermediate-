@@ -35,3 +35,14 @@ function changeFilterBtn(btn){
         }
     });
 }
+
+/*scroll into views
+
+const priorTabs = document.querySelectorAll('priorTabs');
+priorTabs.scrollIntoView({
+    behavior:'smooth',
+    inline:'center',
+    block : 'center'
+})
+
+*/
