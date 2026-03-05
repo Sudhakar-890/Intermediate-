@@ -1,274 +1,285 @@
-body{
-    padding-top:72px;
+body {
+    padding-top: 72px;
 }
 
-header h1{
-    font-size:25px;
-    text-wrap:nowrap;
-    width:min-content;
-    margin-left:10px;
-    padding-top:3px;
+header h1 {
+    font-size: 25px;
+    text-wrap: nowrap;
+    width: min-content;
+    margin-left: 10px;
+    padding-top: 3px;
 }
 
 /* filters */
 
-main{
-    width:100vw;
+main {
+    width: 100vw;
 }
 
-#mainBox{
-    width:100%;
-    margin:10px 0px;
-    overflow:hidden;
+#mainBox {
+    width: 100%;
+    margin: 10px 0px;
+    overflow: hidden;
 }
 
-#filterRow{
-    display:flex;
-    gap:13px;
-    flex-wrap:nowrap;
-    overflow-x:scroll;
+#filterRow {
+    display: flex;
+    gap: 13px;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
     scrollbar-width: none;
-    padding-right:10px;
+    padding-right: 10px;
 }
 
-.filterBtn{
-    padding:5px 20px;
-    border-radius:20px;
-    border:none;
-    color:darkblue;
-    font-weight:bold;
-    letter-spacing:0.5px;
-    background-color:rgba(245, 245, 245, 0.801);
+.filterBtn {
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: none;
+    color: darkblue;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    background-color: rgba(245, 245, 245, 0.801);
 }
 
-#filterRow:first-child{
-    padding-left:12px;
+#filterRow:first-child {
+    padding-left: 12px;
 }
 
 /* task list layouts */
 
-#taskListBox{
-  margin-top:30px;
+#taskListBox {
+    margin-top: 30px;
 }
 
 /* search box styles here*/
 
 input[type=search] {
-     display: none;
-     opacity: 0;
-     border: 1px solid black;
-     padding: 5px 10px;
-     width: 90%;
-     height: 100%;
-     margin-left: 10px;
-     outline: none;
-     color:darkblue;
-     border-radius:5px;
- }
+    display: none;
+    opacity: 0;
+    border: 1px solid black;
+    padding: 5px 10px;
+    width: 90%;
+    height: 100%;
+    margin-left: 10px;
+    outline: none;
+    color: darkblue;
+    border-radius: 5px;
+}
 
- .task-hide {
-     display: none;
-     opacity: 0;
- }
+.task-hide {
+    display: none !important;
+    opacity: 0;
+}
 
- .search-active {
-     display: block !important;
-     opacity: 1 !important;
- }
+.search-active {
+    display: block !important;
+    opacity: 1 !important;
+}
 
- @keyframes rotateTask {
-     0% {
-         opacity: 0;
-         transform: translateY(100%);
-     }
+@keyframes rotateTask {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
 
-     100% {
-         opacity: 1;
-         transform: translateX(0);
-     }
- }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 
- @keyframes rotateSearch {
-     0% {
-         opacity: 0;
-         transform: translateY(100%);
-     }
+@keyframes rotateSearch {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
 
-     100% {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
- #searchBox {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
- }
+#searchBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:20px;
+    overflow: hidden;
+}
 
- #searchIcon {
-     width: 35px;
-     margin-right: 20px;
-     transition: all 0.2s;
- }
+#searchToggle{
+    margin-left:20px;
+    width:70%;
+}
 
- #searchIcon:active {
-     transform: scale(0.95);
- }
+#searchIcon {
+    width: 35px;
+    transition: all 0.2s;
+    margin-right:10px;
+}
+
+#searchIcon:active {
+    transform: scale(0.95);
+}
 
 /* search box styles end*/
 
 
-#priorityBox{
-    display:flex;
+#priorityBox {
+    display: flex;
     justify-content: space-between;
-    width:90%;
-    background-color:beige;
-    color:orangered;
-    border-bottom:4px solid rgb(53, 53, 139) ;
-    border-top:4px solid rgb(53, 53, 139) ;
+    background-color: beige;
+    color: orangered;
+    margin-left:10px;
 }
 
-#priorityBox div{
-    width:30%;
-    padding:8px 8px;
-    text-align:center;
+#priorityBox div {
+    width: 30%;
+    padding: 5px 20px;
+    text-align: center;
+    box-shadow:inset 1px 0px 3px black
 }
 
-#highBtn,#mediumBtn,#lowBtn{
-    font-size:medium;
-    font-weight:bold;
+#highBtn,
+#mediumBtn,
+#lowBtn {
+    font-size: medium;
 }
 
-.curPriorTab{
-    color:white;
-    font-weight:bolder;
+#mediumBtn {
+    width: max-content !important;
+}
+
+.curPriorTab {
+    color: white;
+    font-weight: bolder;
     background-color: rgb(53, 53, 139);
 }
 
 /* task list */
 
-#scrollBox{
- margin-top: 20px;
- width:100vw;
- overflow:auto;
- scroll-snap-type:x mandatory;
+#scrollBox {
+    margin-top: 20px;
+    width: 100vw;
+    overflow: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
 }
 
-#taskListDisplay{
- width:max-content;
- display:flex;
+#taskListDisplay {
+    width: max-content;
+    display: flex;
 }
 
-.priorTabs{
- scroll-snap-align:center;
- width:100vw;
+.priorTabs {
+    scroll-snap-align: center;
+    width: 100vw;
 }
 
-.titleBox{
- display:flex;
- gap:5px;
+.titleBox {
+    display: flex;
+    gap: 5px;
 }
 
-.titleIcon{
- width:25px;
- object-fit: cover
+.titleIcon {
+    width: 25px;
+    object-fit: cover
 }
 
-.taskTitle{
- margin-bottom:10px;
- word-spacing: 8px;
- letter-spacing:0.5px;
- 
+.taskTitle {
+    margin-bottom: 10px;
+    word-spacing: 8px;
+    letter-spacing: 0.5px;
+
 }
 
-.taskBox{
-width:90%;
-border-radius:15px;
-border:1px grey solid;
-padding:10px;
-margin:5px auto;
-display:flex;
-gap:10px;
-align-items:center;
-background-color :white;
+.taskBox {
+    width: 90%;
+    border-radius: 15px;
+    border: 1px grey solid;
+    padding: 10px;
+    margin: 5px auto;
+    display: flex;
+    gap: 10px;
+    background-color: white;
 }
 
-.taskDetail{
- width:75%;
+.taskDetail {
+    width: 75%;
 }
 
-.taskTimeBox{
- display:flex;
- gap:10px;
- align-items:center;
+.taskTimeBox {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
-.taskCalender{
- width:16px;
- margin-bottom:5px;
+.taskCalender {
+    width: 16px;
+    margin-bottom: 5px;
 }
 
-.taskDateTime{
- font-size: 10px;
- margin-bottom:5px;
+.taskDateTime {
+    font-size: 10px;
+    margin-bottom: 5px;
 }
 
-.taskDescription{
- font-size: 10px;
- opacity:0.6;
+.taskDescription {
+    font-size: 10px;
+    opacity: 0.6;
 }
 
-.taskDescription::before{
- content:'text: ';
- display:block;
- width:25px;
- height:10px;
- margin-bottom:2px;
- color:orangered;
+.taskDescription::before {
+    content: 'text: ';
+    display: block;
+    width: 25px;
+    height: 10px;
+    margin-bottom: 2px;
+    color: orangered;
 }
 
-.taskActions{
- width:25%;
- height:100%;
- display:flex;
- flex-direction: column;
- gap:10px;
- justify-content:flex-start;
+.taskActions {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-start;
 }
 
-.taskIcons{
- display:flex;
- gap:10px;
- justify-content: flex-end;
+.taskIcons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
 }
 
-.taskIcons img{
- width:20px;
+.taskIcons img {
+    width: 20px;
 }
 
-#high .taskTitle{
- color:red;
+#high .taskTitle {
+    color: red;
 }
 
-#medium .taskTitle{
- color:orange;
+#medium .taskTitle {
+    color: orange;
 }
 
-#low .taskTitle{
- color:blue;
+#low .taskTitle {
+    color: blue;
 }
 
-.completeBtn{
- font-size: 5px;
- padding:5px;
- border-radius: 10px;
- border:1px grey solid;
- background-color:green;
- color:white;
- font-weight: bolder;
+.completeBtn {
+    font-size: 10px;
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: 1px grey solid;
+    background-color: green;
+    color: white;
+    font-weight: bolder;
 }
 
-.completeBtn:active{
- transform:scale(0.98);
+.completeBtn:active {
+    transform: scale(0.98);
 }
