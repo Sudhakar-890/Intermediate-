@@ -1,11 +1,14 @@
 // prior tab change
 
-let currentTab;
+let currentTab=0;
 const priors = document.querySelectorAll('.prior');
 priors.forEach((prior,index)=>{
-    prior.addEventListener('click',()=>changePriorTab(index))
+    prior.addEventListener('click',()=>{
+        changePriorTab(index);
+        scrollToTab(index);
+    });
 });
-
+changePriorTab(currentTab);
 function changePriorTab(Tab){
     priors.forEach((prior,index)=>{
         if(Tab!=index){
@@ -13,7 +16,6 @@ function changePriorTab(Tab){
         }
         else{
             prior.classList.add('curPriorTab');
-            scrollToTab(Tab)
         }
     });
     
@@ -21,7 +23,6 @@ function changePriorTab(Tab){
 
 function scrollToTab(Tab){
     const tabs = document.querySelectorAll('.priorTabs');
-    console.log(priors[Tab])
     tabs[Tab].scrollIntoView({
         behavior:'smooth',
         block:'center',
