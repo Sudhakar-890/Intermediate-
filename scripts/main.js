@@ -20,13 +20,14 @@ function fetchInput(){
  });
  
  // save the input in LS
- saveToStorage(KEY,JSON.stringify('taskStorage'));
- 
+ console.log(taskStorage);
+ saveToStorage(KEY,taskStorage);
+
  // clear input fields
- title.value = " ";
- description.value = " ";
- date.value = " ";
- time.value = " ";
- priority.value = " ";
+ title.value = "";
+ description.value = "";
+ date.value = "";
+ time.value = "";
+ priority.value = "high";
 }
 
