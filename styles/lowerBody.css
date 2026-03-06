@@ -38,6 +38,7 @@ footer{
 #menuPile a{
     text-decoration: none;
     filter: grayscale(80%);
+    -webkit-tap-highlight-color:transparent ;
 }
 
 @media screen and (min-width:400px){

@@ -2,173 +2,174 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task List</title>
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/task-list/task-view.css">
-    <link rel="stylesheet" href="styles/lowerBody.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Task List</title>
+ <link rel="stylesheet" href="styles/header.css">
+ <link rel="stylesheet" href="styles/general.css">
+ <link rel="stylesheet" href="styles/task-list/task-view.css">
+ <link rel="stylesheet" href="styles/lowerBody.css">
 </head>
 
 <body>
-    <header>
-        <section id="headerBox">
-            <div id="hamburger-menu-box">
-                <img src="assets/menu-bar.png" alt="hamburger-menu" class="hamburger-menu">
-            </div>
-            <h1>Task List</h1>
-            <div id="appNameBox">
-                <img src="assets/app-name-smart.png" alt="Smart" id="appName">
-                <p id="floatName">task manager pro</p>
-            </div>
-        </section>
-    </header>
-
-    <main>
-        <section id="mainBox">
-            <!-- filters -->
-            <div id="filterRow">
-                <button class="filterBtn">All</button>
-                <button class="filterBtn">Completed</button>
-                <button class="filterBtn">Pending</button>
-                <button class="filterBtn">Failed</button>
-                <button class="filterBtn">Deleted</button>
-            </div>
-
-            <!--search box with priority-->
-            <div id="searchBox">
-                <div id="searchToggle">
-                    <!-- priority bar -->
-                    <div id="priorityBox">
-                        <div class="prior" id="highBtn">
-                            High
-                        </div>
-                        <div class="prior" id="mediumBtn">
-                            Medium
-                        </div>
-                        <div class="prior" id="lowBtn">
-                            Low
-                        </div>
-                    </div>
-                    <input type="search" placeholder="search">
-                </div>
-                <img id="searchIcon" src="assets/gifs/find.png" alt="search icon" />
-            </div>
-
-
-            <div id="scrollBox">
-                <section id='taskListDisplay'>
-                <section class="priorTabs" id='high'>
-                    <div class='taskBox'>
-                        <div class='taskDetail'>
-                            <div class="titleBox">
-                                <img src='assets/gifs/target.png' class="titleIcon" />
-                                <h3 class='taskTitle'>Complete HW</h3>
-                            </div>
-                            <div class="taskTimeBox">
-                                <img class='taskCalender' src='assets/gifs/schedule.png'>
-                                <p class='taskDateTime'>
-                                    27.05.2026 &#183; 9.00pm
-                                </p>
-                            </div>
-                            <p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
-                        </div>
-                        <div class="taskActions">
-                            <div class="taskIcons">
-                                <img class="taskTrashIcon" src="assets/task-list/edit.png" />
-                                <img class="taskTrashIcon" src="assets/task-list/trash.png" />
-                            </div>
-                            <button class="completeBtn">
-                                complete &#10004;
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="priorTabs" id='medium'>
-                    <div class='taskBox'>
-                        <div class='taskDetail'>
-                            <div class="titleBox">
-                                <img src='assets/gifs/target.png' class="titleIcon" />
-                                <h3 class='taskTitle'>Complete HW</h3>
-                            </div>
-                            <div class="taskTimeBox">
-                                <img class='taskCalender' src='assets/gifs/schedule.png'>
-                                <p class='taskDateTime'>
-                                    27.05.2026 &#183; 9.00pm
-                                </p>
-                            </div>
-                            <p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
-                        </div>
-                        <div class="taskActions">
-                            <div class="taskIcons">
-                                <img class="taskTrashIcon" src="assets/task-list/edit.png" />
-                                <img class="taskTrashIcon" src="assets/task-list/trash.png" />
-                            </div>
-                            <button class="completeBtn">
-                                complete &#10004;
-                            </button>
-                        </div>
-                    </div>
-                </section>
-                <section class="priorTabs" id='low'>
-                    <div class='taskBox'>
-                        <div class='taskDetail'>
-                            <div class="titleBox">
-                                <img src='assets/gifs/target.png' class="titleIcon" />
-                                <h3 class='taskTitle'>Complete HW</h3>
-                            </div>
-                            <div class="taskTimeBox">
-                                <img class='taskCalender' src='assets/gifs/schedule.png'>
-                                <p class='taskDateTime'>
-                                    27.05.2026 &#183; 9.00pm
-                                </p>
-                            </div>
-                            <p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
-                        </div>
-                        <div class="taskActions">
-                            <div class="taskIcons">
-                                <img class="taskTrashIcon" src="assets/task-list/edit.png" />
-                                <img class="taskTrashIcon" src="assets/task-list/trash.png" />
-                            </div>
-                            <button class="completeBtn">
-                                complete &#10004;
-                            </button>
-                        </div>
-                    </div>
-                </section>
-        </section>
+ <header>
+  <section id="headerBox">
+   <div id="hamburger-menu-box">
+    <img src="assets/menu-bar.png" alt="hamburger-menu" class="hamburger-menu">
+   </div>
+   <h1>Task List</h1>
+   <div id="appNameBox">
+    <img src="assets/app-name-smart.png" alt="Smart" id="appName">
+    <p id="floatName">task manager pro</p>
+   </div>
+  </section>
+ </header>
+ 
+ <main>
+  <section id="mainBox">
+   <!-- filters -->
+   <div id="filterRow">
+    <button class="filterBtn">All</button>
+    <button class="filterBtn">Completed</button>
+    <button class="filterBtn">Pending</button>
+    <button class="filterBtn">Failed</button>
+    <button class="filterBtn">Deleted</button>
+   </div>
+   
+   <!--search box with priority-->
+   <div id="searchBox">
+    <div id="searchToggle">
+     <!-- priority bar -->
+     <div id="priorityBox">
+      <div class="prior" id="highBtn">
+       High
+      </div>
+      <div class="prior" id="mediumBtn">
+       Medium
+      </div>
+      <div class="prior" id="lowBtn">
+       Low
+      </div>
+     </div>
+     <input type="search" placeholder="search">
+    </div>
+    <img id="searchIcon" src="assets/gifs/find.png" alt="search icon" />
+   </div>
+   
+   
+   <div id="scrollBox">
+    <section id='taskListDisplay'>
+     <section class="priorTabs" id='high'>
+      <div class='taskBox'>
+       <div class='taskDetail'>
+        <div class="titleBox">
+         <img src='assets/gifs/target.png' class="titleIcon" />
+         <h3 class='taskTitle'>Complete HW</h3>
         </div>
+        <div class="taskTimeBox">
+         <img class='taskCalender' src='assets/gifs/schedule.png'>
+         <p class='taskDateTime'>
+          27.05.2026 &#183; 9.00pm
+         </p>
         </div>
-        </section>
-    </main>
-
-
-    <footer>
-        <section id="menuPile">
-            <a href="index.html">
-                <div class="pileBox">
-                    <img class="pileLogo" src="assets/pile/task-edit.png" alt="" />
-                    <p id="pileText">task view</p>
-                </div>
-            </a>
-            <a href="task-list.html">
-                <div class="pileBox">
-                    <img class="pileLogo" src="assets/pile/task-list.png" alt="" />
-                    <p id="pileText">task list</p>
-                </div>
-            </a>
-            <a href="settings.html">
-                <div class="pileBox">
-                    <img class="pileLogo" src="assets/pile/settings.png" />
-                    <p id="pileText">settings</p>
-                </div>
-            </a>
-        </section>
-    </footer>
-    <script src="scripts/general.js">    </script>
-    <script src="scripts/task-list/task-view-animate.js"></script>
+        <p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
+       </div>
+       <div class="taskActions">
+        <div class="taskIcons">
+         <img class="taskTrashIcon" src="assets/task-list/edit.png" />
+         <img class="taskTrashIcon" src="assets/task-list/trash.png" />
+        </div>
+        <button class="completeBtn">
+         complete &#10004;
+        </button>
+       </div>
+      </div>
+     </section>
+     
+     <section class="priorTabs" id='medium'>
+      <div class='taskBox'>
+       <div class='taskDetail'>
+        <div class="titleBox">
+         <img src='assets/gifs/target.png' class="titleIcon" />
+         <h3 class='taskTitle'>Complete HW</h3>
+        </div>
+        <div class="taskTimeBox">
+         <img class='taskCalender' src='assets/gifs/schedule.png'>
+         <p class='taskDateTime'>
+          27.05.2026 &#183; 9.00pm
+         </p>
+        </div>
+        <p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
+       </div>
+       <div class="taskActions">
+        <div class="taskIcons">
+         <img class="taskTrashIcon" src="assets/task-list/edit.png" />
+         <img class="taskTrashIcon" src="assets/task-list/trash.png" />
+        </div>
+        <button class="completeBtn">
+         complete &#10004;
+        </button>
+       </div>
+      </div>
+     </section>
+     <section class="priorTabs" id='low'>
+      <div class='taskBox'>
+       <div class='taskDetail'>
+        <div class="titleBox">
+         <img src='assets/gifs/target.png' class="titleIcon" />
+         <h3 class='taskTitle'>Complete HW</h3>
+        </div>
+        <div class="taskTimeBox">
+         <img class='taskCalender' src='assets/gifs/schedule.png'>
+         <p class='taskDateTime'>
+          27.05.2026 &#183; 9.00pm
+         </p>
+        </div>
+        <p class='taskDescription'>Ess assignment 2 submit before 10.3.2026</p>
+       </div>
+       <div class="taskActions">
+        <div class="taskIcons">
+         <img class="taskTrashIcon" src="assets/task-list/edit.png" />
+         <img class="taskTrashIcon" src="assets/task-list/trash.png" />
+        </div>
+        <button class="completeBtn">
+         complete &#10004;
+        </button>
+       </div>
+      </div>
+     </section>
+    </section>
+   </div>
+   </div>
+  </section>
+ </main>
+ 
+ 
+ <footer>
+  <section id="menuPile">
+   <a href="index.html">
+    <div class="pileBox">
+     <img class="pileLogo" src="assets/pile/task-edit.png" alt="" />
+     <p id="pileText">task view</p>
+    </div>
+   </a>
+   <a href="task-list.html">
+    <div class="pileBox">
+     <img class="pileLogo" src="assets/pile/task-list.png" alt="" />
+     <p id="pileText">task list</p>
+    </div>
+   </a>
+   <a href="settings.html">
+    <div class="pileBox">
+     <img class="pileLogo" src="assets/pile/settings.png" />
+     <p id="pileText">settings</p>
+    </div>
+   </a>
+  </section>
+ </footer>
+ <script src="scripts/general.js"> </script>
+ <script src="scripts/task-list/task-view-animate.js"></script>
+ <script src='./scripts/task-list/' type="module"></script>
 </body>
 
 </html>
