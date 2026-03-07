@@ -9,24 +9,33 @@ const priority = document.querySelector('#priority');
 const addBtn = document.querySelector('#addBtn');
 addBtn.addEventListener('click',fetchInput);
 
-function fetchInput(){
+export function fetchInput(){
  const KEY = 'inputData';
- taskStorage.push({
-  title : title.value,
-  description:description.value,
-  date:date.value,
-  time:time.value,
-  priority:priority.value
- });
- 
- // save the input in LS
- saveToStorage(KEY,JSON.stringify('taskStorage'));
- 
- // clear input fields
- title.value = " ";
- description.value = " ";
- date.value = " ";
- time.value = " ";
- priority.value = " ";
+
+    if (title.value && date.value && time.value){
+        console.log('enterred')
+        taskStorage.push({
+            title: title.value,
+            description: description.value || 'no description',
+            date: date.value,
+            time: time.value,
+            priority: priority.value
+        }); 
+        // save the input in LS
+        console.log(taskStorage)
+        saveToStorage(KEY, taskStorage);
+
+        // clear input fields
+        title.value = "";
+        description.value = "";
+        date.value = "";
+        time.value = "";
+        priority.value = "high";
+}
+
+else{
+    console.log('Enter task details')
+}
+
 }
 

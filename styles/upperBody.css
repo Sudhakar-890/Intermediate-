@@ -164,7 +164,7 @@
      border: none;
      width: 300px;
      border-radius: 15px;
-     padding: 2px 7px;
+     padding: 5px 7px;
      color: darkblue;
      background-color: lightblue;
      background-image:url('../assets/gifs/schedule.png');
@@ -172,7 +172,6 @@
      background-position:top 50% right 25px;
      background-repeat:no-repeat;
      margin:15px 0px 10px;
-
  }
  
  #time{
@@ -180,7 +179,7 @@
      border: none;
      width: 195px;
      border-radius: 15px;
-     padding: 2px 7px;
+     padding: 5px 7px;
      color: darkblue;
      background-color: lightblue;
      background-image:url('../assets/gifs/clock.png');
@@ -188,15 +187,23 @@
      background-position:top 50% right 25px;
      background-repeat:no-repeat;
      margin-right:5px;
+     user-select: none;
+ }
 
+ #time::-webkit-calendar-picker-indicator{
+    display:none;
+ }
+
+ #date::-webkit-calendar-picker-indicator {
+     display: none;
  }
 
  #priority {
      outline: none;
      border: none;
-     width: 90px;
+     width: 95px;
      border-radius: 15px;
-     padding: 2px 7px;
+     padding: 5px 7px;
      background-color: rgb(255, 193, 0);
      color: darkblue;
  }
@@ -207,9 +214,9 @@
      border:1px grey solid;
      margin: 35px 0px 10px; 
      color: white;
-     box-shadow: -1px 1px 10px beige,1px -1px 10px black;
      transition: all 0.2s;
  }
+
 
  #addBtn {
     background-color: blue;
@@ -223,7 +230,7 @@
 
  #addBtn:active,
  #clearBtn:active {
-     box-shadow: none;
+    box-shadow: -1px 1px 10px beige, 1px -1px 10px black;
      transform: scale(0.95);
  }
 

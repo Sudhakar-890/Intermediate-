@@ -39,21 +39,21 @@
   <section id="center">
    <br>
    <center>
-    <div id='inputBox'>
-     <input id="text" placeholder="Enter text here...">
-     <textarea id="description" placeholder="Description..."></textarea>
-     <input type='date'>
-     <input placeholder="hi" type="time" id="time" />
-     <select id="priority">
+    <div id='inputBox' tabindex="0">
+     <input id="text" tabindex="1" placeholder="Enter text here...">
+     <textarea id="description" tabindex="2" placeholder="Description..."></textarea>
+     <input type='date' id="date" tabindex="3">
+     <input type="time" id="time" tabindex="4">
+     <select id="priority" tabindex="5">
       <option value="high">High</option>
       <option value="medium">Medium</option>
       <option value="low">Low</option>
      </select>
      <br>
-     <button id="clearBtn">
+     <button id="clearBtn" tabindex="6">
       Clear
      </button>
-     <button id="addBtn">
+     <button id="addBtn" tabindex="7">
       Add Task
      </button>
     </div>
@@ -82,9 +82,9 @@
    </a>
   </section>
  </footer>
- <script type="text/javascript" charset="utf-8" src='scripts/animation.js'> </script>
  <script src="scripts/general.js"></script>
  <script type="module" src="scripts/main.js"></script>
+<script type="module" src='scripts/animation.js'> </script>
 </body>
 
 </html>
