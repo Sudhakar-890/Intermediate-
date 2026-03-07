@@ -1,5 +1,6 @@
 body {
     padding-top: 72px;
+    height:100vh;
 }
 
 header h1 {
@@ -14,12 +15,13 @@ header h1 {
 
 main {
     width: 100vw;
+    height:80%;
 }
 
 #mainBox {
     width: 100%;
+    height:100%;
     margin: 10px 0px;
-    overflow: hidden;
 }
 
 #filterRow {
@@ -163,13 +165,16 @@ input[type=search] {
 #scrollBox {
     margin-top: 20px;
     width: 100vw;
-    overflow:hidden;
-    scrollbar-width: none;
+    height: 100%;
+    overflow-y:scroll;
+    overflow-x:hidden ;
 }
 
 #taskListDisplay {
     width: max-content;
+    height: max-content;
     display: flex;
+    padding-bottom:80px;
 }
 
 .priorTabs {

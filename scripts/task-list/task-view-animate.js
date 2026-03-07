@@ -25,9 +25,13 @@ function scrollToTab(Tab){
     const tabs = document.querySelectorAll('.priorTabs');
     tabs[Tab].scrollIntoView({
         behavior:'smooth',
-        block:'center',
+        block:'start',
         inline:'center'
     })
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
+    });
 }
 
 

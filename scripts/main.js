@@ -1,5 +1,4 @@
-import taskStorage,{saveToStorage} from './data/data.js';
-
+import {saveToStorage,taskStorage} from './data/data.js';
 const title = document.querySelector('#text');
 const description = document.querySelector('#description');
 const date = document.querySelector('input[type=date]');
@@ -13,7 +12,7 @@ export function fetchInput(){
  const KEY = 'inputData';
 
     if (title.value && date.value && time.value){
-        console.log('enterred')
+        console.log('enterred'+taskStorage)
         taskStorage.push({
             title: title.value,
             description: description.value || 'no description',

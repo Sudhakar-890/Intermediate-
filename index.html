@@ -40,7 +40,7 @@
    <br>
    <center>
     <div id='inputBox' tabindex="0">
-     <input id="text" tabindex="1" placeholder="Enter text here...">
+     <input id="text" tabindex="1" maxlength="15">
      <textarea id="description" tabindex="2" placeholder="Description..."></textarea>
      <input type='date' id="date" tabindex="3">
      <input type="time" id="time" tabindex="4">
@@ -56,6 +56,10 @@
      <button id="addBtn" tabindex="7">
       Add Task
      </button>
+     <!-- floating span -->
+     <span id="textSpan">
+      title (max 15 char)
+      </span>
     </div>
    </center>
   </section>
@@ -84,7 +88,7 @@
  </footer>
  <script src="scripts/general.js"></script>
  <script type="module" src="scripts/main.js"></script>
-<script type="module" src='scripts/animation.js'> </script>
+ <script type="module" src='scripts/animation.js'> </script>
 </body>
 
 </html>

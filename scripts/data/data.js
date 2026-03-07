@@ -1,5 +1,4 @@
-const taskStorage = JSON.parse(localStorage.getItem('inputData')) || [];
-export default taskStorage;
+export const taskStorage = JSON.parse(localStorage.getItem('inputData')) || [];
 
 export function saveToStorage(key,datum) {
  let temp = JSON.stringify(datum);

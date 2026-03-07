@@ -1,4 +1,4 @@
-import taskStorage,{saveToStorage} from '../data/data.js';
+import {saveToStorage,taskStorage} from '../data/data.js';
 
 export function taskHTML()
 {

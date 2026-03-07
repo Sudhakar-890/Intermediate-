@@ -134,10 +134,24 @@
      outline: none;
      color: darkmagenta;
  } 
-
- #text::placeholder {
-     color: darkmagenta;
- } 
+ 
+ #textSpan{
+  position:absolute ;
+  top:90px;
+  left:35px;
+  font-size: 11px;
+  opacity:0.5;
+  font-weight:bold;
+  color: darkmagenta;
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.5s;
+ }
+ 
+ .moveTextSpan{
+  left:25px !important;
+  transform: translateY(-20px);
+ }
  
 #description{
     width:300px;
@@ -158,6 +172,9 @@
     color: darkmagenta;
 }
 
+#description:focus,#date,#time,#priority:focus{
+ box-shadow:inset -5px -1px 10px rgba(0, 0, 0, 0.562);
+}
 
  input[type='date'] {
      outline: none;
