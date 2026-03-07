@@ -11,4 +11,8 @@ function changeTab(){
     else if(file=='Task List'){
         piles[1].style.filter='grayscale(0)';
     }
+    
+    else{
+        piles[2].style.filter='grayscale(0)';
+    }
 }
