@@ -21,7 +21,7 @@ export function taskHTML()
           ${task.date} &#183; ${task.time}
          </p>
         </div>
-        <p class='taskDescription'>${task.description}</p>
+        <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
        </div>
        <div class="taskActions">
         <div class="taskIcons">
@@ -51,7 +51,7 @@ export function taskHTML()
           ${task.date} &#183; ${task.time}
          </p>
         </div>
-        <p class='taskDescription'>${task.description}</p>
+        <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
        </div>
        <div class="taskActions">
         <div class="taskIcons">
@@ -81,7 +81,7 @@ export function taskHTML()
           ${task.date} &#183; ${task.time}
          </p>
         </div>
-        <p class='taskDescription'>${task.description}</p>
+        <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
        </div>
        <div class="taskActions">
         <div class="taskIcons">

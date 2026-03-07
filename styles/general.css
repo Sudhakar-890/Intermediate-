@@ -11,7 +11,7 @@ body{
     display: flex;
     flex-direction: column;
     gap:10px;
-    padding-top:100px;
+    padding-top:80px;
 }
 
 @media screen and (min-width:400px){
