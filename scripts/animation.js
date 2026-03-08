@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     else {
      fetchInput();
-    }
-    
+    } 
    }
   });
  });
@@ -78,3 +77,51 @@ clearBtn.addEventListener('click', () => {
  time.value = "";
  priority.value = "high";
 });
+
+// back to input stage after alertSpan
+
+let alertSpan1 = true;
+let alertSpan2 = true;
+let alertSpan3 = true;
+
+title.addEventListener('input', (event) => {
+    if (document.querySelector('.alertSpan1')) {
+        document.querySelector('.alertSpan1').remove();
+        title.style.borderColor = 'darkmagenta';
+        alertSpan1 = false;
+
+        if (!alertSpan1 && !alertSpan2 && !alertSpan3) {
+            console.log('remove alertSpan')
+            document.querySelector('#alertSpan').remove();
+        }
+    }
+});
+
+date.addEventListener('change', () => {
+    if (document.querySelector('.alertSpan2')) {
+        document.querySelector('.alertSpan2').remove();
+        date.style.outline = 'none';
+        date.style.boxShadow = 'var(--input-box-shade)';
+        alertSpan2 = false;
+
+        if (!alertSpan1 && !alertSpan2 && !alertSpan3) {
+            console.log('remove alertSpan')
+            document.querySelector('#alertSpan').remove();
+        }
+    }
+});
+
+time.addEventListener('change', () => {
+    if (document.querySelector('.alertSpan3')) {
+        document.querySelector('.alertSpan3').remove();
+        time.style.outline = 'none';
+        time.style.boxShadow = 'var(--input-box-shade)';
+        alertSpan3 = false;
+
+        if(!alertSpan1 && !alertSpan2 && !alertSpan3){
+            console.log('remove alertSpan')
+            document.querySelector('#alertSpan').remove();
+        }
+    }
+});
+

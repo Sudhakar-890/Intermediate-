@@ -1,3 +1,8 @@
+ :root{
+    --input-box-shade : inset -5px -1px 10px rgba(0, 0, 0, 0.562),
+        inset 5px 1px 10px rgba(0, 0, 0, 0.562);
+ }
+ 
  #searchToggle {
      flex: 1;
      height: 47px;
@@ -133,7 +138,12 @@
      border-bottom: 3px ridge darkslateblue;
      outline: none;
      color: darkmagenta;
+    transition: box-shadow 0.3s;
  } 
+
+ #text:focus{
+    box-shadow: 0px 5px 6px rgba(18, 54, 15, 0.562);
+ }
  
  #textSpan{
   position:absolute ;
@@ -164,6 +174,7 @@
     height:70px;
     outline:none;
     resize:none;
+    transition: box-shadow 0.3s;
 }
 
 #description::placeholder{
@@ -172,8 +183,12 @@
     color: darkmagenta;
 }
 
-#description:focus,#date,#time,#priority:focus{
- box-shadow:inset -5px -1px 10px rgba(0, 0, 0, 0.562);
+#description:focus,#date,#time,#priority{
+ box-shadow:inset -5px -5px 10px rgba(0, 0, 0, 0.562);
+}
+
+#date:focus,#time:focus,#priority:focus{
+    box-shadow: var(--input-box-shade);
 }
 
  input[type='date'] {
@@ -188,7 +203,8 @@
      background-size:18px;
      background-position:top 50% right 25px;
      background-repeat:no-repeat;
-     margin:15px 0px 10px;
+     margin:15px 0px;
+    transition: box-shadow 0.3s;
  }
  
  #time{
@@ -205,6 +221,7 @@
      background-repeat:no-repeat;
      margin-right:5px;
      user-select: none;
+    transition: box-shadow 0.3s;
  }
 
  #time::-webkit-calendar-picker-indicator{
@@ -221,8 +238,10 @@
      width: 95px;
      border-radius: 15px;
      padding: 5px 7px;
+     margin:5px;
      background-color: rgb(255, 193, 0);
      color: darkblue;
+    transition: box-shadow 0.3s;
  }
 
  #addBtn,#clearBtn {
@@ -232,8 +251,9 @@
      margin: 35px 0px 10px; 
      color: white;
      transition: all 0.2s;
+    box-shadow:inset -5px -5px 10px rgba(18, 54, 15, 0.562),
+    0px 5px 10px rgba(18, 54, 15, 0.562);
  }
-
 
  #addBtn {
     background-color: blue;
@@ -247,9 +267,42 @@
 
  #addBtn:active,
  #clearBtn:active {
-    box-shadow: -1px 1px 10px beige, 1px -1px 10px black;
      transform: scale(0.95);
  }
+
+ #alertSpan{
+    position:absolute;
+    bottom:57px;
+    display:none;
+    word-spacing:5px;
+    left:80px;
+    font-size:smaller;
+    color:red;
+ }
+
+ .alertSpan1{
+    position: absolute;
+    top: 113px;
+    left: 30px;
+    font-size:small;
+    color: red;
+ }
+
+  .alertSpan2 {
+      position: absolute;
+      bottom: 125px;
+      left: 30px;
+      font-size: small;
+      color: red;
+  }
+
+   .alertSpan3 {
+       position: absolute;
+       bottom: 76px;
+       left: 30px;
+       font-size: small;
+       color: red;
+   }
 
  @media screen and (min-width:400px) {
 
