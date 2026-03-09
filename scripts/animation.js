@@ -82,8 +82,6 @@ date.addEventListener('change',()=>{
    inputBox.focus();
   });
 
-
-
 // clear inputs 
 const clearBtn = document.querySelector('#clearBtn');
 clearBtn.addEventListener('click', () => {
