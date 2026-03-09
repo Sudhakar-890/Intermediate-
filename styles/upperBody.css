@@ -1,6 +1,7 @@
  :root{
     --input-box-shade : inset -5px -1px 10px rgba(0, 0, 0, 0.562),
         inset 5px 1px 10px rgba(0, 0, 0, 0.562);
+    --default-input-bs:inset -5px -5px 10px rgba(0, 0, 0, 0.562);
  }
  
  #searchToggle {
@@ -183,12 +184,16 @@
     color: darkmagenta;
 }
 
-#description:focus,#date,#time,#priority{
- box-shadow:inset -5px -5px 10px rgba(0, 0, 0, 0.562);
+#description:focus,#priority{
+ box-shadow:var(--default-input-bs);
 }
 
 #date:focus,#time:focus,#priority:focus{
     box-shadow: var(--input-box-shade);
+}
+
+.focusInput{
+    box-shadow: var(--default-input-bs);
 }
 
  input[type='date'] {
@@ -205,10 +210,12 @@
      background-repeat:no-repeat;
      margin:15px 0px;
     transition: box-shadow 0.3s;
+    /* box-shadow: var(--default-input-bs); */
  }
  
- #time{
+ input[type=time]{
      outline: none;
+    /* box-shadow: var(--default-input-bs); */
      border: none;
      width: 195px;
      border-radius: 15px;
@@ -271,10 +278,14 @@
      transform: scale(0.95);
  }
 
+ .js-addBtn{
+    transform: scale(0.95);
+ }
+
  #alertSpan{
     position:absolute;
     bottom:58px;
-    display:none;
+    visibility: hidden;
     word-spacing:5px;
     left:80px;
     font-size:x-small;

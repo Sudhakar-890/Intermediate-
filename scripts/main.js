@@ -9,10 +9,14 @@ const addBtn = document.querySelector('#addBtn');
 addBtn.addEventListener('click',fetchInput);
 
 export function fetchInput(){
- const KEY = 'inputData';
+
+    setTimeout(()=>{
+        addBtn.classList.remove('js-addBtn')
+    },200);
+    addBtn.classList.add('js-addBtn')
+    const KEY = 'inputData';
 
     if (title.value && date.value && time.value){
-        console.log('enterred'+taskStorage)
         taskStorage.push({
             title: title.value,
             description: description.value || 'no description',
@@ -21,7 +25,6 @@ export function fetchInput(){
             priority: priority.value
         }); 
         // save the input in LS
-        console.log(taskStorage)
         saveToStorage(KEY, taskStorage);
 
         // clear input fields
@@ -33,7 +36,7 @@ export function fetchInput(){
 }
 
 else{
-    document.querySelector('#alertSpan').style.display = 'block';
+    document.querySelector('#alertSpan').style.visibility = 'visible';
     const alertSpan1 = `<span class='alertSpan1'>please enter title...</span>`;
 
     if(!title.value && !document.querySelector('.alertSpan1')){
@@ -45,14 +48,14 @@ else{
         const alertSpan2 = `<span class='alertSpan2'>please set date...</span>`;
         date.insertAdjacentHTML('afterend', alertSpan2);
         date.style.outline = '1px solid red';
-        date.style.boxShadow = 'none';
+        date.classList.remove('focusInput');
     }
 
     if (!time.value && !document.querySelector('.alertSpan3')) {
         const alertSpan3 = `<span class='alertSpan3'>please set time...</span>`;
         time.insertAdjacentHTML('afterend', alertSpan3);
         time.style.outline = '1px solid red';
-        time.style.boxShadow = 'none';
+        time.classList.remove('focusInput');
     }
 
 }
