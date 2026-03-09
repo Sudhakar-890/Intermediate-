@@ -29,10 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   field.addEventListener('keydown', (event) => {
    if (event.key == 'Enter') {
     event.preventDefault();
-    let next = index + 1;
-    field = fields[next];
-    if (field) {
-     field.focus();
+    next = fields[index+1];
+    if (next) {
+     next.focus();
     }
     else {
      fetchInput();
@@ -49,26 +48,42 @@ document.addEventListener('DOMContentLoaded', () => {
  // move span on blur
  fields[0].addEventListener('blur',()=>{
   if(!fields[0].value){
-   console.log('back')
    document.querySelector('#textSpan').classList.remove('moveTextSpan');
   }
  });
  
-});
+ // fix clicks on date and time
 
-
-// fix clicks on date and time
-document.addEventListener("DOMContentLoaded", () => {
  [date, time].forEach((field) => {
   field.addEventListener('focus', (event) => {
    event.preventDefault();
-   field.showPicker();
+   if(field){
+    field.showPicker()
+   }
   });
  });
+
+ 
 });
 
-// clear inputs 
+//;autofocus to next after value set 
+ priority.addEventListener('change',()=>{
+  priority.blur();
+ });
+ 
+ try{
+date.addEventListener('change',()=>{
+  time.focus();
+  });
+ }catch(e){}
+  
+  time.addEventListener('change',()=>{
+   priority.focus();
+  });
 
+
+
+// clear inputs 
 const clearBtn = document.querySelector('#clearBtn');
 clearBtn.addEventListener('click', () => {
  title.value = "";
@@ -80,47 +95,46 @@ clearBtn.addEventListener('click', () => {
 
 // back to input stage after alertSpan
 
-let alertSpan1 = true;
-let alertSpan2 = true;
-let alertSpan3 = true;
+const alertSpan = document.querySelector('#alertSpan');
 
-title.addEventListener('input', (event) => {
-    if (document.querySelector('.alertSpan1')) {
-        document.querySelector('.alertSpan1').remove();
+
+title.addEventListener('input', () => {
+ const alertSpan1 = document.querySelector('.alertSpan1');
+    if (alertSpan1) {
+     console.log("₹")
+        alertSpan1.remove();
         title.style.borderColor = 'darkmagenta';
-        alertSpan1 = false;
-
-        if (!alertSpan1 && !alertSpan2 && !alertSpan3) {
-            console.log('remove alertSpan')
-            document.querySelector('#alertSpan').remove();
+        if (date.value && time.value && title.value) {
+            alertSpan.remove();
         }
     }
 });
+
 
 date.addEventListener('change', () => {
-    if (document.querySelector('.alertSpan2')) {
-        document.querySelector('.alertSpan2').remove();
+ const alertSpan2 = document.querySelector('.alertSpan2');
+    if (alertSpan2) {
+        alertSpan2.remove();
         date.style.outline = 'none';
         date.style.boxShadow = 'var(--input-box-shade)';
-        alertSpan2 = false;
 
-        if (!alertSpan1 && !alertSpan2 && !alertSpan3) {
-            console.log('remove alertSpan')
-            document.querySelector('#alertSpan').remove();
+        if (date.value && time.value && title.value) {
+            alertSpan.remove();
         }
     }
 });
 
+
+
 time.addEventListener('change', () => {
-    if (document.querySelector('.alertSpan3')) {
-        document.querySelector('.alertSpan3').remove();
+ const alertSpan3 = document.querySelector('.alertSpan3');
+    if (alertSpan3) {
+        alertSpan3.remove();
         time.style.outline = 'none';
         time.style.boxShadow = 'var(--input-box-shade)';
-        alertSpan3 = false;
 
-        if(!alertSpan1 && !alertSpan2 && !alertSpan3){
-            console.log('remove alertSpan')
-            document.querySelector('#alertSpan').remove();
+        if(date.value && time.value && title.value){
+            alertSpan.remove();
         }
     }
 });
