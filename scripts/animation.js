@@ -66,19 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
  
 });
 
-//;autofocus to next after value set 
+//autofocus to next after value set 
+const inputBox = document.querySelector('#inputBox');
  priority.addEventListener('change',()=>{
-  priority.blur();
+  inputBox.focus();
  });
  
  try{
 date.addEventListener('change',()=>{
-  time.focus();
+  inputBox.focus();
   });
  }catch(e){}
   
   time.addEventListener('change',()=>{
-   priority.focus();
+   inputBox.focus();
   });
 
 
