@@ -1,0 +1,69 @@
+body{
+ padding-top:20px;
+}
+
+main{
+ padding:10px;
+ width:100vw;
+}
+
+#profileBox{
+ padding-top:20px;
+ height:350px;
+ width:100%;
+ border:2px solid grey;
+ background-color:whitesmoke;
+ border-radius:20px;
+}
+
+#profileBox center{
+ line-height:1.5;
+ height:65%;
+ border-bottom:2px double darkblue;
+ padding:10px;
+}
+
+.userImgBox{
+ width:130px;
+ height:130px;
+ border-radius: 50%;
+ background-color:red;
+}
+
+.userImg{
+ width:100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+.userName{
+ font-size: 20px;
+ margin-top:10px;
+}
+
+.userEmail{
+ font-size:12px;
+}
+
+.userSettings{
+ width: 100%;
+ height:35%;
+ padding:10px 20px;
+ display:flex;
+ flex-direction:column;
+ justify-content:space-around ;
+}
+
+.settingRow{
+ display:flex;
+ padding:0px 10px;
+ justify-content:space-between;
+ align-items: center;
+}
+
+.settingRow img{
+ width:20px;
+}
+
+
+
