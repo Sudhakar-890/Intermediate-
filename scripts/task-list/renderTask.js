@@ -25,10 +25,10 @@ export function taskHTML()
        </div>
        <div class="taskActions">
         <div class="taskIcons">
-         <img class="taskTrashIcon" src="assets/task-list/edit.png" />
-         <img class="taskTrashIcon" src="assets/task-list/trash.png" />
+         <img class="taskEditIcon" src="assets/task-list/edit.png" />
+         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button class="completeBtn">
+        <button data-id=${task.id} class="completeBtn">
          complete &#10004;
         </button>
        </div>
@@ -55,10 +55,10 @@ export function taskHTML()
        </div>
        <div class="taskActions">
         <div class="taskIcons">
-         <img class="taskTrashIcon" src="assets/task-list/edit.png" />
-         <img class="taskTrashIcon" src="assets/task-list/trash.png" />
+         <img data-id='${task.id}' class="taskEditIcon" src="assets/task-list/edit.png" />
+         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button class="completeBtn">
+        <button data-id="${task.id}" class="completeBtn">
          complete &#10004;
         </button>
        </div>
@@ -85,10 +85,10 @@ export function taskHTML()
        </div>
        <div class="taskActions">
         <div class="taskIcons">
-         <img class="taskTrashIcon" src="assets/task-list/edit.png" />
-         <img class="taskTrashIcon" src="assets/task-list/trash.png" />
+         <img data-id='${task.id}' class="taskEditIcon" src="assets/task-list/edit.png" />
+         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button class="completeBtn">
+        <button data-id='${task.id}' class="completeBtn">
          complete &#10004;
         </button>
        </div>
