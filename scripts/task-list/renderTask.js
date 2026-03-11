@@ -1,11 +1,11 @@
 import {saveToStorage,taskStorage} from '../data/data.js';
 
-export function taskHTML()
+export function taskHTML(taskData)
 {
  let highHTML = "";
  let mediumHTML = '';
  let lowHTML = "";
- taskStorage.forEach((task)=>{
+ taskData.forEach((task)=>{
  if(task.priority=='high'){
     highHTML += 
     `
@@ -88,7 +88,7 @@ export function taskHTML()
          <img class="taskTrashIcon" src="assets/task-list/edit.png" />
          <img class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button class="completeBtn">
+        <button data-id = '${task.id}' class="completeBtn">
          complete &#10004;
         </button>
        </div>
@@ -110,4 +110,4 @@ export function taskHTML()
 });
 }
 
-taskHTML();
+taskHTML(taskStorage);

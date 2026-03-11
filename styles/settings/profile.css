@@ -9,16 +9,17 @@ main{
 
 #profileBox{
  padding-top:20px;
- height:350px;
+ height:400px;
  width:100%;
  border:2px solid grey;
  background-color:whitesmoke;
  border-radius:20px;
+ padding:10px;
 }
 
 #profileBox center{
  line-height:1.5;
- height:65%;
+ height:55%;
  border-bottom:2px double darkblue;
  padding:10px;
 }
@@ -47,16 +48,19 @@ main{
 
 .userSettings{
  width: 100%;
- height:35%;
+ height:40%;
  padding:10px 20px;
  display:flex;
  flex-direction:column;
  justify-content:space-around ;
+ border-radius: 20px;
+ background:rgb(245, 245, 169);
+ margin-top:15px;
 }
 
 .settingRow{
  display:flex;
- padding:0px 10px;
+ padding:10px;
  justify-content:space-between;
  align-items: center;
 }
@@ -65,5 +69,7 @@ main{
  width:20px;
 }
 
-
+.settingRow:not(:nth-child(3)){
+    border-bottom:1px grey solid;
+}
 
