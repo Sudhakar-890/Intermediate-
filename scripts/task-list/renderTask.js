@@ -1,10 +1,18 @@
 import {saveToStorage,taskStorage} from '../data/data.js';
 
-export function taskHTML()
+renderPage();
+ 
+export function renderPage(){
+ 
+ taskHTML();
+ 
+function taskHTML()
 {
+ 
  let highHTML = "";
  let mediumHTML = '';
  let lowHTML = "";
+ console.log('taskHTML',taskStorage);
  taskStorage.forEach((task)=>{
  if(task.priority=='high'){
     highHTML += 
@@ -106,8 +114,36 @@ export function taskHTML()
         low : lowHTML 
     }
     const tab = document.querySelector(`#${option}`);
+    tab.innerHTML = "";
     tab.insertAdjacentHTML('afterbegin',variables[option]);
 });
 }
 
-taskHTML();
+
+
+// delete buttons
+
+let trashBtns = document.querySelectorAll('.taskTrashIcon');
+
+if(trashBtns){
+trashBtns.forEach((trashBtn)=>{
+ trashBtn.addEventListener('click', ()=>{
+  const id = trashBtn.dataset.id;
+  deleteTask(id);
+ });
+});
+ }
+
+function deleteTask(id){
+ let temp = []
+ taskStorage.forEach((task)=>{
+  if(task.id!=id){
+   temp.push(task);
+  }
+ })
+
+ saveToStorage('inputData',temp);
+ renderPage();
+}
+
+}

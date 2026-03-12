@@ -188,7 +188,7 @@ input[type=search] {
 
 .titleIcon {
     width: 25px;
-    object-fit: cover
+    object-fit: cover;
 }
 
 .taskTitle {
@@ -259,7 +259,15 @@ input[type=search] {
 }
 
 .taskIcons img {
-    width: 20px;
+    width: 23px;
+    transition:all 0.3s;
+    border-radius:30%;
+}
+
+.taskIcons img:active{
+    filter:grayScale(100%);
+    transform:scale(0.90);
+    background-color:lightblue ;
 }
 
 #high .taskTitle {

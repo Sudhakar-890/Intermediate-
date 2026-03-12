@@ -1,4 +1,5 @@
 import { saveToStorage, taskStorage } from './data/data.js';
+
 const title = document.querySelector('#text');
 const description = document.querySelector('#description');
 const date = document.querySelector('input[type=date]');
@@ -17,8 +18,15 @@ export function fetchInput() {
  const KEY = 'inputData';
  
  if (title.value && date.value && time.value) {
-  let priorTabs = document.querySelectorAll('.priorTabs');
-  let count = (priorTabs.length)+101;
+  setTimeout(()=>{
+  let count = (taskStorage.length)+101;
+  let li = []
+  taskStorage.forEach((task,index)=>{
+   li.push(task.id);
+  });
+  while(li.includes(count)){
+   count+=1;
+  }
   
   taskStorage.push({
    title: title.value,
@@ -29,6 +37,7 @@ export function fetchInput() {
    id : count
   });
   // save the input in LS
+  console.log(taskStorage);
   saveToStorage(KEY, taskStorage);
   
   // clear input fields
@@ -37,6 +46,18 @@ export function fetchInput() {
   date.value = "";
   time.value = "";
   priority.value = "high";
+  
+  overlayImg.setAttribute('src','../assets/loading/task-added.gif');
+  document.addEventListener('click',(event)=>{
+   if(event.target.closest('.overlay')){
+    overlay.classList.remove('overlayUnhide');
+   }
+  });
+  },3000);
+  const overlayImg = document.querySelector('.overlayImg');
+  const overlay = document.querySelector('.overlay');
+  overlay.classList.add('overlayUnhide');
+  overlayImg.setAttribute('src','../assets/loading/task-loading.gif');
  }
  
  else {
