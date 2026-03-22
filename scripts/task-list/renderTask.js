@@ -1,9 +1,14 @@
 import { saveToStorage, taskStorage } from '../data/data.js';
 
+import { completedTasks, deletedTasks } from '../data/data.js';
+
 renderPage();
 
 export function renderPage() {
- 
+
+  let highCount = 0;
+  let mediumCount = 0;
+  let lowCount = 0;
    taskHTML();
    
  function taskHTML()
@@ -11,12 +16,28 @@ export function renderPage() {
   let highHTML = "";
   let mediumHTML = '';
   let lowHTML = "";
-  let highCount = findhighCount();
-  
+   findCount();
+   console.log(highCount,mediumCount,lowCount);
+
   console.log('taskHTML', taskStorage);
+  if(taskStorage.length===0){
+    taskStorage.push(1);
+  }
+
   taskStorage.forEach((task) => {
-   if (task.priority === 'high' && highCount!=0) {
-    
+    console.log(highCount == 0)
+    if (task.priority === 'high' || highCount == 0) {
+     if (highCount== 0){
+      console.log('high html reached 0')
+      highHTML = 
+      `
+          <div class='taskBox'>
+          no Tasks added yet !
+          </div>
+      `;
+     }
+    else{
+
     highHTML +=
      `
         <div class='taskBox'>
@@ -44,11 +65,20 @@ export function renderPage() {
        </div>
       </div>
     `;
-    
+    }
     
    }
    
-   else if (task.priority == 'medium') {
+   if (task.priority == 'medium' || mediumCount==0) {
+     if (mediumCount == 0) {
+       mediumHTML =
+         `
+          <div class='taskBox'>
+          no Tasks added yet !
+          </div>
+      `;
+     }
+     else{
     mediumHTML +=
      `
         <div class='taskBox'>
@@ -75,10 +105,19 @@ export function renderPage() {
         </button>
        </div>
       </div>
-    `
+    `;}
    }
    
-   else if (task.priority == 'low') {
+    if (task.priority == 'low' || lowCount == 0) {
+     if (lowCount == 0) {
+       lowHTML =
+         `
+          <div class='taskBox'>
+          no Tasks added yet !
+          </div>
+      `;
+     }
+     else {
     lowHTML +=
      `
         <div class='taskBox'>
@@ -105,7 +144,7 @@ export function renderPage() {
         </button>
        </div>
       </div>
-    `
+    `;}
    }
   });
   
@@ -141,51 +180,118 @@ export function renderPage() {
  // function to delete task 
  
  function deleteTask(id) {
-  let temp = []
+   let temp = {};
+   taskStorage.forEach((task) => {
+     if (task.id == id) {
+       temp = task;
+     }
+   })
+
+   deletedTasks.unshift(temp);
+
+   // save the task to local storage after and re-render the tasks
+   saveToStorage('deleted', deletedTasks);
+
+  let temp2 = []
   taskStorage.forEach((task) => {
    if (task.id != id) {
-    temp.push(task);
+    temp2.push(task);
    }
   })
   
   // save the task to local storage after and re-render the tasks
-  saveToStorage('inputData', temp);
+  saveToStorage('inputData', temp2);
   renderPage();
  }
+
+ document.querySelectorAll('.completeBtn').forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    const id = btn.dataset.id;
+    completeTask(id)
+  });
+ });
+
+//  complete task
+function completeTask(id) {
+  let temp = {};
+  taskStorage.forEach((task) => {
+    if (task.id == id) {
+      temp = task;
+    }
+  })
+
+  completedTasks.unshift(temp)
+  console.log(completedTasks,'complete')
+
+  // save the task to local storage after and re-render the tasks
+  saveToStorage('completed', completedTasks);
+
+  let temp2 = []
+  taskStorage.forEach((task) => {
+    if (task.id != id) {
+      temp2.push(task);
+    }
+  })
+
+  // save the task to local storage after and re-render the tasks
+  saveToStorage('inputData', temp2);
+
+  renderPage();
+}
+
+  // edit task
+  document.querySelectorAll('.taskEditIcon').forEach((edit)=>{
+    edit.addEventListener('click',()=>{
+      const id = edit.dataset.id;
+      editTask(id);
+    });
+  });
+
+  function editTask(id){
+    console.log('edit')
+    document.querySelector('.overlay').classList.add('overlayUnhide');
+    const inputTag = document.querySelectorAll('.overlay input');
+    const selectTag = document.querySelector('.overlay select');
+    const btn = document.querySelectorAll('.overlay button');
+    taskStorage.forEach((task)=>{
+      if(task.id==id){
+        inputTag[0].value = task.title;
+        inputTag[1].value = task.description;
+        inputTag[2].value = task.date;
+        inputTag[3].value = task.time;
+        selectTag.value = task.priority;
+      }
+      btn[1].addEventListener('click',()=>{
+        task.title = inputTag[0].value ? inputTag[0].value : task.title;
+        task.description = inputTag[1].value ? input[1].value : task.description;
+        task.date = inputTag[2].value ? inputTag[2].value : task.date;
+        task.time = inputTag[3].value ? inputTag[3].value : task.time;
+        task.priority = selectTag.value ? selectTag.value : task.priority;
+        document.querySelector('.overlay').classList.remove('overlayUnhide');
+        saveToStorage('inputData',taskStorage);
+        renderPage();
+      })
+
+      btn[0].addEventListener('click',()=>{
+        document.querySelector('.overlay').classList.remove('overlayUnhide');
+      });
+    })
+  }
  
- // fetch the total high count
- function findhighCount(){
-  let highCount = 0;
+ // fetch the total count
+ function findCount(){
   taskStorage.forEach((task)=>{
    if(task.priority=='high')
    {
-    highCount ++;
+    highCount +=1;
+   }
+   else if(task.priority=='medium'){
+    mediumCount +=1;
+   }
+   else{
+    lowCount += 1;
    }
   });
-  console.log('in findhighcount function'+highCount);
-  if(highCount===0){
-   manageEmptyTask(highCount);
-  }
-  return highCount;
  }
- 
- function manageEmptyTask(count){
-  console.log(count)
-    if(0==count)
-    {
-     console.log(count);
-     let highHTML = 
-     `
-      <div class="noHighTask">
-       <h4> No tasks added Yet !</h4>
-      </div>
-     `;
-     
-     const tab = document.querySelector(`#high`);
-     console.log(tab,highHTML)
-   tab.innerHTML = "";
-   tab.insertAdjacentHTML('afterbegin', highHTML);
-   console.log('end')
-    }
- }
+
 }

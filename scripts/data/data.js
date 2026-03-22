@@ -13,3 +13,12 @@ function updateTaskStorage(){
  [];
 }
 
+// deletedTasks
+export let deletedTasks = JSON.parse(localStorage.getItem('deleted')) ||
+    [];
+
+// completed tasks
+
+export let completedTasks = JSON.parse(localStorage.getItem('completed')) ||
+    [];
+
