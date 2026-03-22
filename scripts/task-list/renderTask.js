@@ -1,22 +1,24 @@
-import {saveToStorage,taskStorage} from '../data/data.js';
+import { saveToStorage, taskStorage } from '../data/data.js';
 
 renderPage();
+
+export function renderPage() {
  
-export function renderPage(){
- 
- taskHTML();
- 
-function taskHTML()
-{
- 
- let highHTML = "";
- let mediumHTML = '';
- let lowHTML = "";
- console.log('taskHTML',taskStorage);
- taskStorage.forEach((task)=>{
- if(task.priority=='high'){
-    highHTML += 
-    `
+   taskHTML();
+   
+ function taskHTML()
+ {
+  let highHTML = "";
+  let mediumHTML = '';
+  let lowHTML = "";
+  let highCount = findhighCount();
+  
+  console.log('taskHTML', taskStorage);
+  taskStorage.forEach((task) => {
+   if (task.priority === 'high' && highCount!=0) {
+    
+    highHTML +=
+     `
         <div class='taskBox'>
        <div class='taskDetail'>
         <div class="titleBox">
@@ -41,12 +43,14 @@ function taskHTML()
         </button>
        </div>
       </div>
-    `
- }
-
-     else if (task.priority == 'medium') {
-         mediumHTML +=
-             `
+    `;
+    
+    
+   }
+   
+   else if (task.priority == 'medium') {
+    mediumHTML +=
+     `
         <div class='taskBox'>
        <div class='taskDetail'>
         <div class="titleBox">
@@ -72,11 +76,11 @@ function taskHTML()
        </div>
       </div>
     `
-     }
-
-     else if(task.priority=='low') {
-         lowHTML +=
-             `
+   }
+   
+   else if (task.priority == 'low') {
+    lowHTML +=
+     `
         <div class='taskBox'>
        <div class='taskDetail'>
         <div class="titleBox">
@@ -102,48 +106,86 @@ function taskHTML()
        </div>
       </div>
     `
-     }
-});
-
-// displaying the HTML
-
-['high', 'medium','low'].forEach((option)=>{
-    const variables = {
-        high : highHTML,
-        medium : mediumHTML,
-        low : lowHTML 
-    }
-    const tab = document.querySelector(`#${option}`);
-    tab.innerHTML = "";
-    tab.insertAdjacentHTML('afterbegin',variables[option]);
-});
-}
-
-
-
-// delete buttons
-
-let trashBtns = document.querySelectorAll('.taskTrashIcon');
-
-if(trashBtns){
-trashBtns.forEach((trashBtn)=>{
- trashBtn.addEventListener('click', ()=>{
-  const id = trashBtn.dataset.id;
-  deleteTask(id);
- });
-});
+   }
+  });
+  
+  // displaying the HTML
+  
+  ['high', 'medium', 'low'].forEach((option) => {
+   const variables = {
+    high: highHTML,
+    medium: mediumHTML,
+    low: lowHTML
+   }
+   const tab = document.querySelector(`#${option}`);
+   tab.innerHTML = "";
+   tab.insertAdjacentHTML('afterbegin', variables[option]);
+  });
  }
-
-function deleteTask(id){
- let temp = []
- taskStorage.forEach((task)=>{
-  if(task.id!=id){
-   temp.push(task);
+ 
+ 
+ 
+ // delete buttons
+ 
+ let trashBtns = document.querySelectorAll('.taskTrashIcon');
+ 
+ if (trashBtns) {
+  trashBtns.forEach((trashBtn) => {
+   trashBtn.addEventListener('click', () => {
+    const id = trashBtn.dataset.id;
+    deleteTask(id);
+   });
+  });
+ }
+ 
+ // function to delete task 
+ 
+ function deleteTask(id) {
+  let temp = []
+  taskStorage.forEach((task) => {
+   if (task.id != id) {
+    temp.push(task);
+   }
+  })
+  
+  // save the task to local storage after and re-render the tasks
+  saveToStorage('inputData', temp);
+  renderPage();
+ }
+ 
+ // fetch the total high count
+ function findhighCount(){
+  let highCount = 0;
+  taskStorage.forEach((task)=>{
+   if(task.priority=='high')
+   {
+    highCount ++;
+   }
+  });
+  console.log('in findhighcount function'+highCount);
+  if(highCount===0){
+   manageEmptyTask(highCount);
   }
- })
-
- saveToStorage('inputData',temp);
- renderPage();
-}
-
+  return highCount;
+ }
+ 
+ function manageEmptyTask(count){
+  console.log(count)
+    if(0==count)
+    {
+     console.log(count);
+     let highHTML = 
+     `
+      <div class="noHighTask">
+       <h4> No tasks added Yet !</h4>
+      </div>
+     `;
+     
+     const tab = document.querySelector(`#high`);
+     console.log(tab,highHTML)
+   tab.innerHTML = "";
+   tab.insertAdjacentHTML('afterbegin', highHTML);
+   console.log('end')
+    }
+ }
 }

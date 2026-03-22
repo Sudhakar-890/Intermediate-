@@ -56,6 +56,7 @@ export function fetchInput() {
       overlay.classList.remove('overlayUnhide');
      }
     });
+    timeoutAddTask = 0;
    }, 3000);
    const overlayImg = document.querySelector('.overlayImg');
    const overlay = document.querySelector('.overlay');
