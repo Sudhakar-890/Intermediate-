@@ -2,6 +2,8 @@ import { saveToStorage, taskStorage } from '../data/data.js';
 
 import { completedTasks, deletedTasks } from '../data/data.js';
 
+import { completedTaskHTML } from './filters.js';
+
 renderPage();
 
 export function renderPage() {
@@ -253,8 +255,10 @@ function completeTask(id) {
     const inputTag = document.querySelectorAll('.overlay input');
     const selectTag = document.querySelector('.overlay select');
     const btn = document.querySelectorAll('.overlay button');
+    setTimeout(()=>{
     taskStorage.forEach((task)=>{
       if(task.id==id){
+       console.log(task.title,task.date,task.time);
         inputTag[0].value = task.title;
         inputTag[1].value = task.description;
         inputTag[2].value = task.date;
@@ -262,8 +266,8 @@ function completeTask(id) {
         selectTag.value = task.priority;
       }
       btn[1].addEventListener('click',()=>{
-        task.title = inputTag[0].value ? inputTag[0].value : task.title;
-        task.description = inputTag[1].value ? input[1].value : task.description;
+        task.title = inputTag[0].value? inputTag[0].value : task.title;
+        task.description = inputTag[1].value ? inputTag[1].value : task.description;
         task.date = inputTag[2].value ? inputTag[2].value : task.date;
         task.time = inputTag[3].value ? inputTag[3].value : task.time;
         task.priority = selectTag.value ? selectTag.value : task.priority;
@@ -275,7 +279,8 @@ function completeTask(id) {
       btn[0].addEventListener('click',()=>{
         document.querySelector('.overlay').classList.remove('overlayUnhide');
       });
-    })
+    });
+    },500);
   }
  
  // fetch the total count
@@ -293,5 +298,17 @@ function completeTask(id) {
    }
   });
  }
+ 
+ document.querySelectorAll('.filterBtn').forEach((btn,i)=>{
+  btn.addEventListener('click',()=>{
+   if(i==0){
+    renderPage();
+   }
+   
+    else if(i==1){
+      completedTaskHTML(completedTasks);
+    }
+  })
+ });
 
 }

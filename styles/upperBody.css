@@ -259,7 +259,7 @@
      margin: 40px 0px 10px; 
      color: white;
      transition: all 0.2s;
-    box-shadow:inset -5px -5px 10px rgba(18, 54, 15, 0.562),
+    box-shadow:inset -5px -5px 10px  rgba(18, 54, 15, 0.562),
     0px 5px 10px rgba(18, 54, 15, 0.562);
  }
 
