@@ -2,7 +2,7 @@ import { saveToStorage, taskStorage } from '../data/data.js';
 
 import { completedTasks, deletedTasks } from '../data/data.js';
 
-import { completedTaskHTML } from './filters.js';
+import { filterTaskHTML } from './filters.js';
 
 renderPage();
 
@@ -306,7 +306,11 @@ function completeTask(id) {
    }
    
     else if(i==1){
-      completedTaskHTML(completedTasks);
+      filterTaskHTML(completedTasks);
+    }
+    
+    else if(i==4){
+     filterTaskHTML(deletedTasks);
     }
   })
  });

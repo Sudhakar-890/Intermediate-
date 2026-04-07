@@ -2,25 +2,25 @@
 
 //import { findCount } from './renderTask.js';
 
-export function completedTaskHTML(completedTasks){
-    let highCount = 0;
-  let mediumCount = 0;
-  let lowCount = 0;
-   taskHTML(completedTasks);
+export function filterTaskHTML(Tasks){
+   let highCount = 0;
+   let mediumCount = 0;
+   let lowCount = 0;
+   taskHTML(Tasks);
    
- function taskHTML(completedTasks)
+ function taskHTML(Tasks)
  {
   let highHTML = "";
   let mediumHTML = '';
   let lowHTML = "";
-   findCount();
+   findCount(Tasks);
    console.log(highCount,mediumCount,lowCount);
 
-  if(completedTasks.length===0){
-    completedTasks.push(1);
+  if(Tasks.length===0){
+    Tasks.push(1);
   }
 
-  completedTasks.forEach((task) => {
+  Tasks.forEach((task) => {
     console.log(highCount == 0)
     if (task.priority === 'high' || highCount == 0) {
      if (highCount== 0){
@@ -50,15 +50,7 @@ export function completedTaskHTML(completedTasks){
         </div>
         <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
        </div>
-       <div class="taskActions">
-        <div class="taskIcons">
-         <img class="taskEditIcon" src="assets/task-list/edit.png" />
-         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
-        </div>
-        <button data-id=${task.id} class="completeBtn">
-         complete &#10004;
-        </button>
-       </div>
+
       </div>
     `;
     }
@@ -91,15 +83,6 @@ export function completedTaskHTML(completedTasks){
         </div>
         <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
        </div>
-       <div class="taskActions">
-        <div class="taskIcons">
-         <img data-id='${task.id}' class="taskEditIcon" src="assets/task-list/edit.png" />
-         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
-        </div>
-        <button data-id="${task.id}" class="completeBtn">
-         complete &#10004;
-        </button>
-       </div>
       </div>
     `;}
    }
@@ -130,15 +113,6 @@ export function completedTaskHTML(completedTasks){
         </div>
         <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
        </div>
-       <div class="taskActions">
-        <div class="taskIcons">
-         <img data-id='${task.id}' class="taskEditIcon" src="assets/task-list/edit.png" />
-         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
-        </div>
-        <button data-id='${task.id}' class="completeBtn">
-         complete &#10004;
-        </button>
-       </div>
       </div>
     `;}
    }
@@ -158,8 +132,8 @@ export function completedTaskHTML(completedTasks){
   });
  }
  
- function findCount(){
-  completedTasks.forEach((task)=>{
+ function findCount(Tasks){
+  Tasks.forEach((task)=>{
    if(task.priority=='high')
    {
     highCount +=1;
