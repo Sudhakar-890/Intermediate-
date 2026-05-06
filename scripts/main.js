@@ -9,7 +9,7 @@ const priority = document.querySelector('#priority');
 const addBtn = document.querySelector('#addBtn');
 addBtn.addEventListener('click', fetchInput);
 let timeoutAddTask;
-export function fetchInput() {
+export async function fetchInput() {
  if (timeoutAddTask) {
   console.log('Please wait !')
  }
@@ -21,27 +21,28 @@ export function fetchInput() {
   const KEY = 'inputData';
   
   if (title.value && date.value && time.value) {
-   timeoutAddTask = setTimeout(() => {
-    let count = (taskStorage.length) + 101;
-    let li = []
-    taskStorage.forEach((task, index) => {
-     li.push(task.id);
-    });
-    while (li.includes(count)) {
-     count += 1;
+   timeoutAddTask = setTimeout(async () => {
+    console.log(description.value);
+    try{
+        const response = await fetch("http://localhost:3000/api/v1/taskstorage",{
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify({
+                title : title.value,
+                description : description.value,
+                date : date.value,
+                time : time.value,
+                priority : priority.value
+            })
+        });
+        const res = await response.json();
+        console.log(res)
     }
-    
-    taskStorage.push({
-     title: title.value,
-     description: description.value || 'no description',
-     date: date.value,
-     time: time.value,
-     priority: priority.value,
-     id: count
-    });
-    // save the input in LS
-    console.log(taskStorage);
-    saveToStorage(KEY, taskStorage);
+    catch(err){
+        console.log(err.message);
+    }
     
     // clear input fields
     title.value = "";

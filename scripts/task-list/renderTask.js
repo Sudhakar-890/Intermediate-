@@ -1,17 +1,27 @@
-import { saveToStorage, taskStorage } from '../data/data.js';
+import { saveToStorage, taskStorage, fetchTaskDB } from '../data/data.js';
 
 import { completedTasks, deletedTasks } from '../data/data.js';
 
 import { filterTaskHTML } from './filters.js';
 
+import dayjs from "dayjs";
+
+console.log(dayjs())
 renderPage();
 
-export function renderPage() {
+export async function renderPage(all=true) {
 
   let highCount = 0;
   let mediumCount = 0;
   let lowCount = 0;
-   taskHTML();
+  await fetchTaskDB('taskStorage');
+  taskHTML();
+  if(all){
+    await fetchTaskDB("completedTasks");
+    filterTaskHTML(completedTasks,true);
+    await fetchTaskDB("deletedTasks");
+    filterTaskHTML(deletedTasks,true);
+  }
    
  function taskHTML()
  {
@@ -19,18 +29,17 @@ export function renderPage() {
   let mediumHTML = '';
   let lowHTML = "";
    findCount();
-   console.log(highCount,mediumCount,lowCount);
 
-  console.log('taskHTML', taskStorage);
+  // console.log('taskHTML', taskStorage);
   if(taskStorage.length===0){
     taskStorage.push(1);
   }
 
   taskStorage.forEach((task) => {
-    console.log(highCount == 0)
+    console.log(task.date>Date(),dayjs(),"date bool check");
     if (task.priority === 'high' || highCount == 0) {
      if (highCount== 0){
-      console.log('high html reached 0')
+      // console.log('high html reached 0')
       highHTML = 
       `
           <div class='taskBox'>
@@ -54,14 +63,14 @@ export function renderPage() {
           ${task.date} &#183; ${task.time}
          </p>
         </div>
-        <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
+        <p class='taskDescription'>${task.description===""? '<i>---no description---</i>' : task.description}</p>
        </div>
        <div class="taskActions">
         <div class="taskIcons">
-         <img class="taskEditIcon" src="assets/task-list/edit.png" />
-         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
+         <img data-id='${task._id}' class="taskEditIcon" src="assets/task-list/edit.png" />
+         <img data-id='${task._id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button data-id=${task.id} class="completeBtn">
+        <button data-id=${task._id} class="completeBtn">
          complete &#10004;
         </button>
        </div>
@@ -95,14 +104,14 @@ export function renderPage() {
           ${task.date} &#183; ${task.time}
          </p>
         </div>
-        <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
+        <p class='taskDescription'>${task.description === "" ? '<i>---no description---</i>' : task.description}</p>
        </div>
        <div class="taskActions">
         <div class="taskIcons">
-         <img data-id='${task.id}' class="taskEditIcon" src="assets/task-list/edit.png" />
-         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
+         <img data-id='${task._id}' class="taskEditIcon" src="assets/task-list/edit.png" />
+         <img data-id='${task._id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button data-id="${task.id}" class="completeBtn">
+        <button data-id="${task._id}" class="completeBtn">
          complete &#10004;
         </button>
        </div>
@@ -134,14 +143,14 @@ export function renderPage() {
           ${task.date} &#183; ${task.time}
          </p>
         </div>
-        <p class='taskDescription'>${task.description == 'no description' ? '<i>---no description---</i>' : task.description}</p>
+        <p class='taskDescription'>${task.description === "" ? '<i>---no description---</i>' : task.description}</p>
        </div>
        <div class="taskActions">
         <div class="taskIcons">
-         <img data-id='${task.id}' class="taskEditIcon" src="assets/task-list/edit.png" />
-         <img data-id='${task.id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
+         <img data-id='${task._id}' class="taskEditIcon" src="assets/task-list/edit.png" />
+         <img data-id='${task._id}' class="taskTrashIcon" src="assets/task-list/trash.png" />
         </div>
-        <button data-id='${task.id}' class="completeBtn">
+        <button data-id='${task._id}' class="completeBtn">
          complete &#10004;
         </button>
        </div>
@@ -164,8 +173,6 @@ export function renderPage() {
   });
  }
  
- 
- 
  // delete buttons
  
  let trashBtns = document.querySelectorAll('.taskTrashIcon');
@@ -181,63 +188,35 @@ export function renderPage() {
  
  // function to delete task 
  
- function deleteTask(id) {
-   let temp = {};
-   taskStorage.forEach((task) => {
-     if (task.id == id) {
-       temp = task;
-     }
-   })
-
-   deletedTasks.unshift(temp);
-
-   // save the task to local storage after and re-render the tasks
-   saveToStorage('deleted', deletedTasks);
-
-  let temp2 = []
-  taskStorage.forEach((task) => {
-   if (task.id != id) {
-    temp2.push(task);
-   }
-  })
-  
-  // save the task to local storage after and re-render the tasks
-  saveToStorage('inputData', temp2);
+ async function deleteTask(id) {
+  try{
+  const response = await fetch(`http://localhost:3000/api/vi/delete/${id}`, {method : "DELETE"});
+  const res = await response.json();
+  console.log(res);
+  }
+catch(e){
+  console.log(e.message);
+}
   renderPage();
- }
+}
 
  document.querySelectorAll('.completeBtn').forEach((btn)=>{
   btn.addEventListener('click',()=>{
     const id = btn.dataset.id;
-    completeTask(id)
+    completeTask(id);
   });
  });
 
 //  complete task
-function completeTask(id) {
-  let temp = {};
-  taskStorage.forEach((task) => {
-    if (task.id == id) {
-      temp = task;
-    }
-  })
-
-  completedTasks.unshift(temp)
-  console.log(completedTasks,'complete')
-
-  // save the task to local storage after and re-render the tasks
-  saveToStorage('completed', completedTasks);
-
-  let temp2 = []
-  taskStorage.forEach((task) => {
-    if (task.id != id) {
-      temp2.push(task);
-    }
-  })
-
-  // save the task to local storage after and re-render the tasks
-  saveToStorage('inputData', temp2);
-
+async function completeTask(id) {
+    try{
+  const response = await fetch(`http://localhost:3000/api/vi/complete/${id}`, {method : "DELETE"});
+  const res = await response.json();
+  console.log(res);
+  }
+  catch(e){
+  console.log(e.message);
+  }
   renderPage();
 }
 
@@ -249,36 +228,51 @@ function completeTask(id) {
     });
   });
 
-  function editTask(id){
-    console.log('edit')
+  async function editTask(id){
     document.querySelector('.overlay').classList.add('overlayUnhide');
     const inputTag = document.querySelectorAll('.overlay input');
     const selectTag = document.querySelector('.overlay select');
     const btn = document.querySelectorAll('.overlay button');
     setTimeout(()=>{
     taskStorage.forEach((task)=>{
-      if(task.id==id){
-       console.log(task.title,task.date,task.time);
+      if(task._id===id){
+      //  console.log(task.title,task.date,task.time);
         inputTag[0].value = task.title;
         inputTag[1].value = task.description;
         inputTag[2].value = task.date;
         inputTag[3].value = task.time;
         selectTag.value = task.priority;
-      }
-      btn[1].addEventListener('click',()=>{
-        task.title = inputTag[0].value? inputTag[0].value : task.title;
-        task.description = inputTag[1].value ? inputTag[1].value : task.description;
-        task.date = inputTag[2].value ? inputTag[2].value : task.date;
-        task.time = inputTag[3].value ? inputTag[3].value : task.time;
-        task.priority = selectTag.value ? selectTag.value : task.priority;
+
+      btn[1].addEventListener('click',async ()=>{
+        let title = inputTag[0].value? inputTag[0].value : task.title;
+        let description = inputTag[1].value ? inputTag[1].value : task.description;
+        let date = inputTag[2].value ? inputTag[2].value : task.date;
+        let time = inputTag[3].value ? inputTag[3].value : task.time;
+        let priority = selectTag.value ? selectTag.value : task.priority;
+        try{
+        const res = await fetch(`http://localhost:3000/api/v1/put/${task._id}`,{
+          method : "PUT",
+          headers : {
+            "Content-Type" : "application/json"
+          },
+          body : JSON.stringify({
+            title,description,date,time,priority
+          })
+        });
+        const resData = await res.json();
+        console.log(resData);
+        }
+        catch(err){
+          console.log(err.message);
+        }
         document.querySelector('.overlay').classList.remove('overlayUnhide');
-        saveToStorage('inputData',taskStorage);
         renderPage();
       })
 
       btn[0].addEventListener('click',()=>{
         document.querySelector('.overlay').classList.remove('overlayUnhide');
       });
+    }
     });
     },500);
   }
@@ -300,17 +294,23 @@ function completeTask(id) {
  }
  
  document.querySelectorAll('.filterBtn').forEach((btn,i)=>{
-  btn.addEventListener('click',()=>{
+  btn.addEventListener('click',async ()=>{
    if(i==0){
     renderPage();
    }
    
     else if(i==1){
-      filterTaskHTML(completedTasks);
+      await fetchTaskDB("completedTasks");
+      filterTaskHTML(completedTasks,"completed");
+    }
+
+    else if(i==2){
+      taskHTML();
     }
     
     else if(i==4){
-     filterTaskHTML(deletedTasks);
+     await fetchTaskDB("deletedTasks");
+     filterTaskHTML(deletedTasks,"deleted");
     }
   })
  });

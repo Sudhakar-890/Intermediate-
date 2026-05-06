@@ -1,8 +1,5 @@
-//import { completedTasks } from "../data/data.js";
 
-//import { findCount } from './renderTask.js';
-
-export function filterTaskHTML(Tasks){
+export function filterTaskHTML(Tasks,filterType,all=false){
    let highCount = 0;
    let mediumCount = 0;
    let lowCount = 0;
@@ -13,22 +10,23 @@ export function filterTaskHTML(Tasks){
   let highHTML = "";
   let mediumHTML = '';
   let lowHTML = "";
-   findCount(Tasks);
-   console.log(highCount,mediumCount,lowCount);
+  console.log(Tasks)
+   all ? null : findCount(Tasks);
+  //  console.log(highCount,mediumCount,lowCount);
+  
 
   if(Tasks.length===0){
     Tasks.push(1);
   }
 
   Tasks.forEach((task) => {
-    console.log(highCount == 0)
     if (task.priority === 'high' || highCount == 0) {
-     if (highCount== 0){
+     if (highCount== 0 && !all){
       console.log('high html reached 0')
       highHTML = 
       `
           <div class='taskBox'>
-          no Tasks added yet !
+          no ${filterType} Tasks !
           </div>
       `;
      }
@@ -36,7 +34,7 @@ export function filterTaskHTML(Tasks){
 
     highHTML +=
      `
-        <div class='taskBox'>
+        <div class='taskBox' style="background-color:${filterType==="deleted"?"rgba(255,0,0,0.4)":"rgba(0,255,0,0.6)"}">
        <div class='taskDetail'>
         <div class="titleBox">
          <img src='assets/gifs/target.png' class="titleIcon" />
@@ -58,18 +56,18 @@ export function filterTaskHTML(Tasks){
    }
    
    if (task.priority == 'medium' || mediumCount==0) {
-     if (mediumCount == 0) {
+     if (mediumCount == 0 && !all) {
        mediumHTML =
          `
           <div class='taskBox'>
-          no Tasks added yet !
+          no ${filterType} Tasks !
           </div>
       `;
      }
      else{
     mediumHTML +=
      `
-        <div class='taskBox'>
+        <div class='taskBox' style="background-color:${filterType==="deleted"?"rgba(255,0,0,0.4)":"rgba(0,255,0,0.6)"}">
        <div class='taskDetail'>
         <div class="titleBox">
          <img src='assets/gifs/target.png' class="titleIcon" />
@@ -88,18 +86,18 @@ export function filterTaskHTML(Tasks){
    }
    
     if (task.priority == 'low' || lowCount == 0) {
-     if (lowCount == 0) {
+     if (lowCount == 0 && !all) {
        lowHTML =
          `
           <div class='taskBox'>
-          no Tasks added yet !
+          no ${filterType} Tasks !
           </div>
       `;
      }
      else {
     lowHTML +=
      `
-        <div class='taskBox'>
+        <div class='taskBox' style="background-color:${filterType==="deleted"?"rgba(255,0,0,0.4)":"rgba(0,255,0,0.6)"}">
        <div class='taskDetail'>
         <div class="titleBox">
          <img src='assets/gifs/target.png' class="titleIcon" />
@@ -127,7 +125,7 @@ export function filterTaskHTML(Tasks){
     low: lowHTML
    }
    const tab = document.querySelector(`#${option}`);
-   tab.innerHTML = "";
+   all ? null :tab.innerHTML = "";
    tab.insertAdjacentHTML('afterbegin', variables[option]);
   });
  }
@@ -146,7 +144,4 @@ export function filterTaskHTML(Tasks){
    }
   });
  }
- 
- 
- 
 }
